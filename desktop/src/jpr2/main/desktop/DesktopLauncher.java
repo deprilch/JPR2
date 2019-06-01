@@ -10,13 +10,14 @@ public class DesktopLauncher {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 		new LwjglApplication(new Main(), config);
 
+		config.fullscreen = true;
+
 		config.width = Gdx.graphics.getWidth();
 		config.height = Gdx.graphics.getHeight();
 
 		/*config.width = 1024;
 		config.height = 800;*/
 
-		config.fullscreen = true;
 		config.title = "Quiz2";
 
 	}

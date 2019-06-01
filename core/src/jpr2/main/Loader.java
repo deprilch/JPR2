@@ -20,8 +20,8 @@ public class Loader {
         FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("BloggerSans.ttf"));
         FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
         parameter.characters = font_chars;
-        //font is 1/30 of any screen resolution
-        parameter.size = 20;    //(int)(size * Gdx.graphics.getHeight());
+        //font is 1/12 of any screen resolution
+        parameter.size = (int)(size * Gdx.graphics.getHeight());
         //filters remove pixelation of font
         parameter.genMipMaps = true;
         parameter.minFilter = Texture.TextureFilter.MipMapLinearNearest;
@@ -76,12 +76,37 @@ public class Loader {
                 style.font = font;
                 style.up = skin.getDrawable("redStyle");
                 style.over = skin.getDrawable("redStyle");
-
+            case yellow:
+                style.font = font;
+                style.up = skin.getDrawable("yellowStyle");
+                style.over = skin.getDrawable("yellowStyle");
+            case purple:
+                style.font = font;
+                style.up = skin.getDrawable("purpleStyle");
+                style.over = skin.getDrawable("purpleStyle");
+            case blue:
+                style.font = font;
+                style.up = skin.getDrawable("blueStyle");
+                style.over = skin.getDrawable("blueStyle");
                 return;
         }
 
     }
-    public Drawable createBackground(Drawable drawable, Skin skin, String path){
+
+    public void setButtonStyle(TextField.TextFieldStyle style, Colors color, BitmapFont font, Skin skin) {
+
+        style.fontColor = Color.WHITE;
+
+        switch (color) {
+            case red:
+                style.font = font;
+                style.background = skin.getDrawable("redStyle");
+                return;
+        }
+
+    }
+
+        public Drawable createBackground(Drawable drawable, Skin skin, String path){
         drawable = skin.getDrawable(path);
         return drawable;
     }

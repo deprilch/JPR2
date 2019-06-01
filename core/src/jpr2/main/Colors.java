@@ -4,7 +4,9 @@ public enum  Colors {
 
     menu,
     red,
-    green
-
+    green,
+    yellow,
+    purple,
+    blue
 
 }

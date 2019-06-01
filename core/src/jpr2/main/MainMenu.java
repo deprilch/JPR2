@@ -1,6 +1,7 @@
 package jpr2.main;
 
 import Konkurses.Quiz.Quiz;
+import NextNext.Next;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.ScreenAdapter;
@@ -28,7 +29,7 @@ public class MainMenu extends ScreenAdapter {
     public TextButton[] guessQuest = new TextButton[2];
     public TextButton[] results = new TextButton[2];
 
-    public MainMenu(final Main main){
+    public MainMenu(){
 
         menuTable = new Table();
 
@@ -37,23 +38,23 @@ public class MainMenu extends ScreenAdapter {
         menuTable.setFillParent(true); //Table is adopting to the stage
 
         for(int i = 0; i < 2; i++){
-            nextQuest[i] = new TextButton("Hi!", main.redStyle);
-            diceQuest[i] = new TextButton("", main.redStyle);
-            guessQuest[i] = new TextButton("", main.redStyle);
-            fansQuest[i] = new TextButton("", main.redStyle);
-            results[i] = new TextButton("", main.redStyle);
+            nextQuest[i] = new TextButton("Hi!", Main.redStyle);
+            diceQuest[i] = new TextButton("", Main.redStyle);
+            guessQuest[i] = new TextButton("", Main.redStyle);
+            fansQuest[i] = new TextButton("", Main.redStyle);
+            results[i] = new TextButton("", Main.redStyle);
         }
 
-        quizQuest = new TextButton("Quiz", main.menuButton);
+        quizQuest = new TextButton("Quiz", Main.menuButton);
 
         quiz = new TextButton("Ребус", Main.menuButton);
         next = new TextButton("Далi-Далi", Main.menuButton);
-        dice = new TextButton("Ребус", main.menuButton);
-        fans = new TextButton("Ребус", main.menuButton);
-        guess = new TextButton("Ребус", main.menuButton);
-        calculateResults = new TextButton("Ребус", main.menuButton);
-        exit = new TextButton("Ребус", main.menuButton);
-        about = new TextButton("Ребус", main.menuButton);
+        dice = new TextButton("Ребус", Main.menuButton);
+        fans = new TextButton("Ребус", Main.menuButton);
+        guess = new TextButton("Ребус", Main.menuButton);
+        calculateResults = new TextButton("Ребус", Main.menuButton);
+        exit = new TextButton("Ребус", Main.menuButton);
+        about = new TextButton("Ребус", Main.menuButton);
 
 
         menuTable.add(quiz).padBottom(10).padRight(10).size(btnWidth,btnHeight);
@@ -81,7 +82,13 @@ public class MainMenu extends ScreenAdapter {
         quiz.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                main.game.setScreen(new Quiz());
+                Main.game.setScreen(new Quiz());
+            }
+        });
+        next.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                Main.game.setScreen(new Next());
             }
         });
 

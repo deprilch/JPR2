@@ -24,13 +24,12 @@ public class Quiz extends jpr2.main.screenFather {
 
     public Quiz(){
 
+        question = new TextButton("texttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttext", Main.redStyle);
         timer = new TextButton("text", Main.menuButton);
-        question = new TextButton("text", Main.menuButton);
 
         table.add(question).colspan(10).expandY().center().fill();
-        table.getCell(question).maxWidth(800);
-        table.getCell(question).maxHeight(400);
-        question.setSize(800, 400);
+        table.getCell(question).maxWidth(1000);
+        table.getCell(question).maxHeight(100);
         table.row();
 
         //timer
@@ -41,7 +40,8 @@ public class Quiz extends jpr2.main.screenFather {
         timer.addListener(new ChangeListener() {
             @Override
             public void changed (ChangeListener.ChangeEvent event, Actor actor) {
-                //main.game.setScreen(new AnatomyAnswer());
+
+                Main.game.setScreen(new WhoIsTheFirstTeam());
             }
         });
 

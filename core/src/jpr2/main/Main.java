@@ -8,15 +8,16 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 
 public class Main extends Game {
 
-	Game game;
+	public static Game game;
 	Loader loader;
 	Camera camera;
 	public static FitViewport viewport;
-	MainMenu mainMenu;
+	public static MainMenu mainMenu;
 
 	Skin menuSkin;
 	BitmapFont font, bigFont;
@@ -27,6 +28,16 @@ public class Main extends Game {
 	public static TextButton.TextButtonStyle menuButton = new TextButton.TextButtonStyle();
 	public static TextButton.TextButtonStyle greenStyle = new TextButton.TextButtonStyle();
 	public static TextButton.TextButtonStyle redStyle = new TextButton.TextButtonStyle();
+	public static TextButton.TextButtonStyle yellowStyle = new TextButton.TextButtonStyle();
+	public static TextButton.TextButtonStyle purpleStyle = new TextButton.TextButtonStyle();
+	public static TextButton.TextButtonStyle blueStyle = new TextButton.TextButtonStyle();
+
+
+	public static String[] nextQuestions, nextAnswers;
+
+
+
+	public static TextField.TextFieldStyle redTextFieldStyle = new TextField.TextFieldStyle();
 
 
 	@Override
@@ -39,18 +50,25 @@ public class Main extends Game {
 
 		//menuSkin = loader.setSkin("menuPack.atlas");
 
-		font = loader.setFont(font, 1/20f);
-		skinPack = loader.setSkin("buttonsStyles.atlas");
+		font = loader.setFont(font, 1/12f);
+		skinPack = loader.setSkin("Styles/styles.atlas");
 
 		loader.setButtonStyle(menuButton, Colors.menu, font, skinPack);
 		loader.setButtonStyle(greenStyle, Colors.green, font, skinPack);
 		loader.setButtonStyle(redStyle, Colors.red, font, skinPack);
+		loader.setButtonStyle(yellowStyle, Colors.yellow, font, skinPack);
+		loader.setButtonStyle(purpleStyle, Colors.purple, font, skinPack);
+		loader.setButtonStyle(blueStyle, Colors.blue, font, skinPack);
+		loader.setButtonStyle(redTextFieldStyle, Colors.red, font, skinPack);
+
+		nextQuestions = loader.loadText("NextNext/nextQuestions.txt");
+		nextAnswers = loader.loadText("NextNext/nextAnswers.txt");
 
 		camera = new OrthographicCamera();
 		viewport = new FitViewport(1600f, 1000f, camera);
 		//camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
-		mainMenu = new MainMenu(this);
+		mainMenu = new MainMenu();
 		game.setScreen(mainMenu);
 
 	}

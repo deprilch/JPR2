@@ -13,6 +13,8 @@ public class screenFather extends ScreenAdapter {
     public  static Stage stage;
     public Table table;
 
+    public int standartSize = 60;
+    public int bigSize = 150;
     public int timerSize = 150;
 
     Main main;
@@ -26,6 +28,7 @@ public class screenFather extends ScreenAdapter {
 
         stage.addActor(table);
         table.setFillParent(true);
+        table.setDebug(true);
     }
 
     @Override
