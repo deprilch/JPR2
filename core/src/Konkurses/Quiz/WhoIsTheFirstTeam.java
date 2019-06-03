@@ -13,8 +13,13 @@ import jpr2.main.screenFather;
 public class WhoIsTheFirstTeam extends screenFather {
 
     TextButton title = new TextButton("Enter team names", Main.redStyle);
+
     TextField firstTeamNameField = new TextField("", Main.redTextFieldStyle);
     TextField secondTeamNameField = new TextField("", Main.redTextFieldStyle);
+
+    TextField descOne = new TextField("Команда №1:", Main.redTextFieldStyle);
+    TextField descTwo = new TextField("Команда №2:", Main.redTextFieldStyle);
+
     TextButton apply = new TextButton("Apply", Main.menuButton);
 
     public static String firstTeamName;
@@ -22,13 +27,15 @@ public class WhoIsTheFirstTeam extends screenFather {
 
     public WhoIsTheFirstTeam(){
 
-        table.add(title).center().fill().width(1200).height(100).padBottom(20);
+        table.add(title).center().colspan(2).height(100).padBottom(20);
         table.row();
-        table.add(firstTeamNameField).center().fill().width(400).height(100).padBottom(20);
+        table.add(descOne).width(400).height(100).padBottom(20).padRight(20);
+        table.add(firstTeamNameField).width(800).height(100).padBottom(20);
         table.row();
-        table.add(secondTeamNameField).center().fill().width(400).height(100).padBottom(20);
+        table.add(descTwo).width(400).height(100).padBottom(20).padRight(20);
+        table.add(secondTeamNameField).width(800).height(100).padBottom(20);
         table.row();
-        table.add(apply).width(400).height(100);
+        table.add(apply).fill().colspan(2).width(400).height(100);
 
         apply.addListener(new ChangeListener() {
             @Override

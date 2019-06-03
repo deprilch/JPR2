@@ -2,6 +2,7 @@ package jpr2.main;
 
 import Konkurses.Quiz.Quiz;
 import NextNext.Next;
+import NextNext.Question;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.ScreenAdapter;
@@ -88,7 +89,7 @@ public class MainMenu extends ScreenAdapter {
         next.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                Main.game.setScreen(Main.question);
+                Main.game.setScreen(new Question());
             }
         });
 

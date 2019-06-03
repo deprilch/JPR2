@@ -24,8 +24,8 @@ public class Quiz extends jpr2.main.screenFather {
 
     public Quiz(){
 
-        question = new TextButton("texttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttext", Main.redStyle);
-        timer = new TextButton("text", Main.menuButton);
+        question = new TextButton("Тут будет ребус", Main.redStyle);
+        timer = new TextButton("", Main.menuButton);
 
         table.add(question).colspan(10).expandY().center().fill();
         table.getCell(question).maxWidth(1000);

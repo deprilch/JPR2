@@ -23,8 +23,10 @@ public class Question extends jpr2.main.screenFather {
 
     Timer timerLeft;
     TimerTask timerTask;
-    public static int timeConst = 241;
-    //public int timeLeft = timeConst;
+    public int timeConst = 241;
+    public static int timeLeft = 0;
+
+    static boolean freshStart = true;
 
     public static TextButton.TextButtonStyle NextbtnStyle = Main.menuButton;
 
@@ -34,6 +36,10 @@ public class Question extends jpr2.main.screenFather {
 
     public Question(){
         timerLeft = new Timer();
+        if(freshStart){
+        timeLeft = timeConst;
+        freshStart = false;
+        }
 
         questButtons = new TextButton[21];
         for(int i = 0; i < 21; i++){
@@ -83,7 +89,7 @@ public class Question extends jpr2.main.screenFather {
         timerTask = new TimerTask() {
             @Override
             public void run() {
-                timeConst--;
+                timeLeft--;
             }
         };
 
@@ -99,7 +105,7 @@ public class Question extends jpr2.main.screenFather {
 
         setBackground();
 
-        timer.setText(Integer.toString(timeConst));
+        timer.setText(Integer.toString(timeLeft));
 
         questButtons[buttonIds].setStyle(Main.yellowStyle);
 
@@ -139,7 +145,6 @@ public class Question extends jpr2.main.screenFather {
     //try to use show for colors change
     @Override
     public void show() {
-        //timeLeft = timeConst;
         timerLeft.schedule(timerTask, 0, 1000);
         soundDone = false;
         Gdx.input.setInputProcessor(stage);
