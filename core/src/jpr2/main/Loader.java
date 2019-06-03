@@ -76,14 +76,17 @@ public class Loader {
                 style.font = font;
                 style.up = skin.getDrawable("redStyle");
                 style.over = skin.getDrawable("redStyle");
+                return;
             case yellow:
                 style.font = font;
                 style.up = skin.getDrawable("yellowStyle");
                 style.over = skin.getDrawable("yellowStyle");
+                return;
             case purple:
                 style.font = font;
                 style.up = skin.getDrawable("purpleStyle");
                 style.over = skin.getDrawable("purpleStyle");
+                return;
             case blue:
                 style.font = font;
                 style.up = skin.getDrawable("blueStyle");

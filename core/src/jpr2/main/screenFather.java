@@ -10,19 +10,14 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 
 public class screenFather extends ScreenAdapter {
 
-    public  static Stage stage;
+    public static Stage stage;
     public Table table;
 
     public int standartSize = 60;
     public int bigSize = 150;
     public int timerSize = 150;
 
-    Main main;
-
     public screenFather(){
-
-        main = new Main();
-
         stage = new Stage(Main.viewport);
         table = new Table();
 
@@ -38,10 +33,5 @@ public class screenFather extends ScreenAdapter {
 
     @Override
     public void dispose() {
-        main.font.dispose();
-    }
-
-    public void resize(int width, int height) {
-        Main.viewport.update(width, height);
     }
 }

@@ -88,7 +88,7 @@ public class MainMenu extends ScreenAdapter {
         next.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                Main.game.setScreen(new Next());
+                Main.game.setScreen(Main.question);
             }
         });
 

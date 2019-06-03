@@ -1,5 +1,6 @@
 package jpr2.main;
 
+import NextNext.Question;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Camera;
@@ -19,8 +20,10 @@ public class Main extends Game {
 	public static FitViewport viewport;
 	public static MainMenu mainMenu;
 
+	public static Question question;
+
 	Skin menuSkin;
-	BitmapFont font, bigFont;
+	public BitmapFont font, bigFont;
 	TextureAtlas menuAtlas;
 
 	Skin skinPack;
@@ -68,6 +71,7 @@ public class Main extends Game {
 		viewport = new FitViewport(1600f, 1000f, camera);
 		//camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
+		question = new Question();
 		mainMenu = new MainMenu();
 		game.setScreen(mainMenu);
 
