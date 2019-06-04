@@ -12,7 +12,7 @@ import jpr2.main.screenFather;
 
 public class WhoIsTheFirstTeam extends screenFather {
 
-    TextButton title = new TextButton("Enter team names", Main.redStyle);
+    TextButton title = new TextButton("Введіть назви команд", Main.redStyle);
 
     TextField firstTeamNameField = new TextField("", Main.redTextFieldStyle);
     TextField secondTeamNameField = new TextField("", Main.redTextFieldStyle);
@@ -20,7 +20,7 @@ public class WhoIsTheFirstTeam extends screenFather {
     TextField descOne = new TextField("Команда №1:", Main.redTextFieldStyle);
     TextField descTwo = new TextField("Команда №2:", Main.redTextFieldStyle);
 
-    TextButton apply = new TextButton("Apply", Main.menuButton);
+    TextButton apply = new TextButton("Готово", Main.menuButton);
 
     public static String firstTeamName;
     public static String secondTeamName;
@@ -47,11 +47,11 @@ public class WhoIsTheFirstTeam extends screenFather {
         });
 
     }
-
     @Override
     public void render(float delta) {
         Gdx.gl.glClearColor(1,1,1, 0);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        setBackground(Main.purpleBackground);
 
         stage.draw();
         stage.act();

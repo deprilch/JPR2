@@ -1,5 +1,6 @@
 package NextNext;
 
+import Konkurses.Quiz.WhoIsTheFirstTeam;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.GL20;
@@ -8,7 +9,7 @@ import jpr2.main.Main;
 
 public class Next extends jpr2.main.screenFather {
 
-    public static TextButton start = new TextButton("Натисніть ENTER щоб розпочати", Main.redStyle);
+    public static TextButton start = new TextButton("", Main.purpleStyle);
     public static int currentQuestion = 1;
     public static int currentAnswer = 1;
     public static int blueScore = 0;
@@ -17,22 +18,16 @@ public class Next extends jpr2.main.screenFather {
 
     public Next(){
 
-        TextButton[] redButtons = new TextButton[21];
-        TextButton[] blueButtons = new TextButton[21];
-        for(int i = 0; i < 21; i++){
-            redButtons[i] = new TextButton(Integer.toString(i + 1), Main.redStyle);
-            blueButtons[i] = new TextButton(Integer.toString(i + 1), Main.blueStyle);
+        if(redCurrent) {
+            start.setStyle(Main.purpleStyle);
+            start.setText("Починає команда " + WhoIsTheFirstTeam.firstTeamName);
+        }
+        else{
+            start.setStyle(Main.purpleStyle);
+            start.setText("Команда " + WhoIsTheFirstTeam.secondTeamName + " - тепер граєте ви!");
         }
 
-        for (int s = 0; s < 21; s++){
-            table.add(redButtons[s]).padBottom(10).padRight(10).padTop(5).size(standartSize,standartSize);
-        }
-        table.row();
-        for (int j = 0; j < 21; j++){
-            table.add(blueButtons[j]).padBottom(10).padRight(10).padTop(5).size(standartSize,standartSize);
-        }
-        table.row();
-        table.add(start).center().colspan(21);
+        table.add(start);
 
     }
 
@@ -44,7 +39,7 @@ public class Next extends jpr2.main.screenFather {
         stage.draw();  //only draws
         stage.act();   //only acts
 
-        setBackground();
+        setBackground(Main.purpleBackground);
 
         if(Gdx.input.isKeyJustPressed(Input.Keys.Q)){
             Gdx.app.exit();

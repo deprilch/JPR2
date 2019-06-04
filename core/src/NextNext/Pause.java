@@ -8,7 +8,7 @@ import jpr2.main.Main;
 
 public class Pause extends jpr2.main.screenFather {
 
-    TextButton question = new TextButton("Увага - наступне запитання!", Main.redStyle);
+    TextButton question = new TextButton("Увага - наступне запитання!", Main.purpleStyle);
 
     public Pause(){
         table.add(question).expandY().center();
@@ -22,7 +22,7 @@ public class Pause extends jpr2.main.screenFather {
         stage.draw();  //only draws
         stage.act();   //only acts
 
-        setBackground();
+        setBackground(Main.purpleBackground);
 
         if(Gdx.input.isKeyJustPressed(Input.Keys.Q)){
             Gdx.app.exit();
@@ -34,10 +34,6 @@ public class Pause extends jpr2.main.screenFather {
         if(Gdx.input.isKeyJustPressed(Input.Keys.ENTER)){
             Main.game.setScreen(new Question());
         }
-    }
-
-    public void setBackground(){
-        //table.setBackground(main.redBackground);
     }
 
 }

@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField;
+import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 
 public class Main extends Game {
@@ -32,11 +33,11 @@ public class Main extends Game {
 	public static TextButton.TextButtonStyle yellowStyle = new TextButton.TextButtonStyle();
 	public static TextButton.TextButtonStyle purpleStyle = new TextButton.TextButtonStyle();
 	public static TextButton.TextButtonStyle blueStyle = new TextButton.TextButtonStyle();
+	public static TextButton.TextButtonStyle wrongStyle = new TextButton.TextButtonStyle();
 
+	public static Drawable redBackground, blueBackground, greenBackground, yellowBackground, orangeBackground, purpleBackground;
 
 	public static String[] nextQuestions, nextAnswers;
-
-
 
 	public static TextField.TextFieldStyle redTextFieldStyle = new TextField.TextFieldStyle();
 
@@ -60,7 +61,15 @@ public class Main extends Game {
 		loader.setButtonStyle(yellowStyle, Colors.yellow, font, skinPack);
 		loader.setButtonStyle(purpleStyle, Colors.purple, font, skinPack);
 		loader.setButtonStyle(blueStyle, Colors.blue, font, skinPack);
+		loader.setButtonStyle(wrongStyle, Colors.wrong, font, skinPack);
 		loader.setButtonStyle(redTextFieldStyle, Colors.red, font, skinPack);
+
+		redBackground = loader.createBackground(redBackground, skinPack, "redStyle");
+		blueBackground = loader.createBackground(blueBackground, skinPack, "blueStyle");
+		greenBackground = loader.createBackground(greenBackground, skinPack, "greenStyle");
+		yellowBackground = loader.createBackground(yellowBackground, skinPack, "yellowStyle");
+		orangeBackground = loader.createBackground(orangeBackground, skinPack, "orangeStyle");
+		purpleBackground = loader.createBackground(purpleBackground, skinPack, "purpleStyle");
 
 		nextQuestions = loader.loadText("NextNext/nextQuestions.txt");
 		nextAnswers = loader.loadText("NextNext/nextAnswers.txt");

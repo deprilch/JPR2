@@ -24,7 +24,7 @@ public class Quiz extends jpr2.main.screenFather {
 
     public Quiz(){
 
-        question = new TextButton("Тут будет ребус", Main.redStyle);
+        question = new TextButton("Тут будет ребус", Main.purpleStyle);
         timer = new TextButton("", Main.menuButton);
 
         table.add(question).colspan(10).expandY().center().fill();
@@ -52,11 +52,12 @@ public class Quiz extends jpr2.main.screenFather {
             }
         };
     }
-
     @Override
     public void render(float delta) {
         Gdx.gl.glClearColor(1, 1, 1, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+
+        setBackground(Main.purpleBackground);
 
         stage.draw();  //only draws
         stage.act();   //only acts

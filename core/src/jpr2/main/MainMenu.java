@@ -1,6 +1,7 @@
 package jpr2.main;
 
 import Konkurses.Quiz.Quiz;
+import Konkurses.Quiz.WhoIsTheFirstTeam;
 import NextNext.Next;
 import NextNext.Question;
 import com.badlogic.gdx.Gdx;
@@ -24,6 +25,7 @@ public class MainMenu extends ScreenAdapter {
     private TextButton quiz, next, dice, fans, guess, exit, calculateResults, about;
 
     public TextButton quizQuest;
+    public TextButton[] quizNames = new TextButton[2];
     public TextButton[] nextQuest = new TextButton[2];
     public TextButton[] diceQuest = new TextButton[2];
     public TextButton[] fansQuest = new TextButton[2];
@@ -39,6 +41,7 @@ public class MainMenu extends ScreenAdapter {
         menuTable.setFillParent(true); //Table is adopting to the stage
 
         for(int i = 0; i < 2; i++){
+            quizNames[i] = new TextButton("", Main.redStyle);
             nextQuest[i] = new TextButton("Hi!", Main.redStyle);
             diceQuest[i] = new TextButton("", Main.redStyle);
             guessQuest[i] = new TextButton("", Main.redStyle);
@@ -59,26 +62,13 @@ public class MainMenu extends ScreenAdapter {
 
 
         menuTable.add(quiz).padBottom(10).padRight(10).size(btnWidth,btnHeight);
-        menuTable.add(nextQuest[0]).padBottom(10).padRight(10).size(100,btnHeight);
-        menuTable.add(nextQuest[1]).padBottom(10).padRight(10).size(100, btnHeight);
+        menuTable.add(quizNames[0]).padBottom(10).padRight(10).size(300,btnHeight);
+        menuTable.add(quizNames[1]).padBottom(10).padRight(10).size(300, btnHeight);
         menuTable.row().padRight(10);
-
         menuTable.add(next).padBottom(10).padRight(10).size(btnWidth,btnHeight);
-        menuTable.add(nextQuest[0]).padBottom(10).padRight(10).size(100,btnHeight);
-        menuTable.add(nextQuest[1]).padBottom(10).padRight(10).size(100, btnHeight);
+        menuTable.add(nextQuest[0]).padBottom(10).padRight(10).size(300,btnHeight);
+        menuTable.add(nextQuest[1]).padBottom(10).padRight(10).size(300, btnHeight);
         menuTable.row().padRight(10);
-
-
-//        menuTable.add(quiz.padRight(10)).size(btnWidth,btnHeight);
-//        menuTable.add(new TextButton("1", main.redStyle)).padBottom(10).padRight(10).size(100,btnHeight);
-//        menuTable.add(new TextButton("2", main.redStyle)).padBottom(10).padRight(10).size(100, btnHeight);
-//        menuTable.row().padRight(10);
-//
-//        menuTable.add(next).padRight(10).size(btnWidth,btnHeight);
-//        menuTable.add(new TextButton("1", main.redStyle)).padBottom(10).padRight(10).size(100,btnHeight);
-//        menuTable.add(new TextButton("2", main.redStyle)).padBottom(10).padRight(10).size(100, btnHeight);
-//        menuTable.row().padRight(10);
-
 
         quiz.addListener(new ChangeListener() {
             @Override
@@ -89,10 +79,30 @@ public class MainMenu extends ScreenAdapter {
         next.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                Main.game.setScreen(new Question());
+                nextQuestClearData();
+                Main.game.setScreen(new Next());
             }
         });
 
+    }
+
+    public void nextQuestClearData(){
+        Next.redScore = 0;
+        Next.blueScore = 0;
+        Next.currentQuestion = 1;
+        Next.currentAnswer = 1;
+        Next.redCurrent = true;
+        Question.buttonIds = 0;
+        for(int i = 0; i < 42; i++){
+            Question.green[i] = false;
+            Question.wrong[i] = false;
+        }
+        Next.start.setStyle(Main.redStyle);
+        Question.NextbtnStyle = Main.redStyle;
+    }
+
+    public void setBackground(){
+        menuTable.setBackground(Main.purpleBackground);
     }
 
     @Override
@@ -100,8 +110,16 @@ public class MainMenu extends ScreenAdapter {
         Gdx.gl.glClearColor(1,1,1, 0);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
+        setBackground();
+
         mainMenuStage.draw();
         mainMenuStage.act();
+
+        quizNames[0].setText(WhoIsTheFirstTeam.firstTeamName);
+        quizNames[1].setText(WhoIsTheFirstTeam.secondTeamName);
+
+        nextQuest[0].setText(Integer.toString(Next.redScore));
+        nextQuest[1].setText(Integer.toString(Next.blueScore));
 
         if(Gdx.input.isKeyJustPressed(Input.Keys.Q)){
             Gdx.app.exit();

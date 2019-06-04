@@ -32,13 +32,13 @@ public class Answer extends jpr2.main.screenFather {
                     Main.game.setScreen(Main.mainMenu);
                     return;
                 }
-                Question.changeColor(Next.currentQuestion, Main.greenStyle);
+                Question.changeColor(Next.currentQuestion, Main.purpleStyle);
                 Question.green[Next.currentQuestion] = true;
                 Next.currentAnswer++;
                 Next.currentQuestion++;
                 if(Next.currentQuestion == 22){
-                    Main.game.setScreen(new Next());
                     redCurrent = false;
+                    Main.game.setScreen(new Next());
                     Question.NextbtnStyle = Main.blueStyle;
                     Next.start.setStyle(Main.blueStyle);
                     setNewPic();
@@ -56,25 +56,24 @@ public class Answer extends jpr2.main.screenFather {
                     Main.game.setScreen(Main.mainMenu);
                     return;
                 }
-                Question.changeColor(Next.currentQuestion, Main.redStyle);
+                Question.changeColor(Next.currentQuestion, Main.purpleStyle);
                 Question.wrong[Next.currentQuestion] = true;
                 Next.currentAnswer++;
                 Next.currentQuestion++;
                 if(Next.currentQuestion == 22){
-                    Main.game.setScreen(new Next());
                     redCurrent = false;
+                    Main.game.setScreen(new Next());
                     Question.NextbtnStyle = Main.blueStyle;
-                    Next.start.setStyle(Main.blueStyle);
+                    Next.start.setStyle(Main.purpleStyle);
                     setNewPic();
                     return;
                 }
                 setNewPic();
                 Main.game.setScreen(new Pause());
-                System.out.println(Next.currentQuestion);
             }
         });
 
-        table.add(new TextButton(Main.nextAnswers[Next.currentAnswer], Question.NextbtnStyle)).colspan(2).center().padBottom(10);
+        table.add(new TextButton(Main.nextAnswers[Next.currentAnswer], Main.purpleStyle)).colspan(2).center().padBottom(10);
         table.row();
         table.add(correct).padRight(10).size(360, 150);
         table.add(incorrect).size(360, 150);
@@ -99,16 +98,16 @@ public class Answer extends jpr2.main.screenFather {
     }
 
     public void setBackground(){
-//        if(redCurrent){
-//            table.setBackground(Main.redBackground);
-//            correct.setStyle(Main.styleBig);
-//            incorrect.setStyle(Main.styleBig);
-//        }
-//        else {
-//            table.setBackground(Main.blueBackground);
-//            correct.setStyle(Main.blueStyleBig);
-//            incorrect.setStyle(Main.blueStyleBig);
-//        }
+        if(redCurrent){
+            table.setBackground(Main.purpleBackground);
+            correct.setStyle(Main.greenStyle);
+            incorrect.setStyle(Main.wrongStyle);
+        }
+        else {
+            table.setBackground(Main.purpleBackground);
+            correct.setStyle(Main.greenStyle);
+            incorrect.setStyle(Main.wrongStyle);
+        }
     }
 
     public void setNewPic(){

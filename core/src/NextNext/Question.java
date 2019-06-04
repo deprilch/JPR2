@@ -71,7 +71,7 @@ public class Question extends jpr2.main.screenFather {
         });
 
         //question
-        table.add(new TextButton(Main.nextQuestions[Next.currentQuestion], NextbtnStyle)).colspan(21).expandY().center();
+        table.add(new TextButton(Main.nextQuestions[Next.currentQuestion], Main.purpleStyle)).colspan(21).expandY().center();
         table.row();
 
         //table.add(image).colspan(4);
@@ -103,7 +103,7 @@ public class Question extends jpr2.main.screenFather {
         stage.draw();  //only draws
         stage.act();   //only acts
 
-        setBackground();
+        setBackground(Main.purpleBackground);
 
         timer.setText(Integer.toString(timeLeft));
 
@@ -115,7 +115,7 @@ public class Question extends jpr2.main.screenFather {
         if(Gdx.input.isKeyJustPressed(Input.Keys.M)){
             Main.game.setScreen(Main.mainMenu);
         }
-        if(timeConst == 0){
+        if(timeLeft == 0){
             timerTask.cancel();
             Main.game.setScreen(new Answer());
         }
@@ -131,15 +131,6 @@ public class Question extends jpr2.main.screenFather {
         }
         questButtons[buttonIds].setStyle(style);
         styles = style;
-    }
-
-    public void setBackground(){
-//        if(redCurrent){
-//            table.setBackground(Main.redBackground);
-//        }
-//        else {
-//            table.setBackground(Main.blueBackground);
-//        }
     }
 
     //try to use show for colors change
