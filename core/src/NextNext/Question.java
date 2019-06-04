@@ -117,7 +117,7 @@ public class Question extends jpr2.main.screenFather {
         }
         if(timeLeft == 0){
             timerTask.cancel();
-            Main.game.setScreen(new Answer());
+            Answer.changeTeam(Next.redCurrent);
         }
     }
 

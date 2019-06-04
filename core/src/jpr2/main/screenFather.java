@@ -24,7 +24,7 @@ public class screenFather extends ScreenAdapter {
 
         stage.addActor(table);
         table.setFillParent(true);
-        table.setDebug(true);
+        table.setDebug(false);
     }
 
     public void setBackground(Drawable background){

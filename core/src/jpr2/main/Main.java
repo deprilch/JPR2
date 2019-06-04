@@ -52,7 +52,7 @@ public class Main extends Game {
 
 		//menuSkin = loader.setSkin("menuPack.atlas");
 
-		font = loader.setFont(font, 1/12f);
+		font = loader.setFont(font, 1/14f);
 		skinPack = loader.setSkin("Styles/styles.atlas");
 
 		loader.setButtonStyle(menuButton, Colors.menu, font, skinPack);

@@ -37,6 +37,7 @@ public class Answer extends jpr2.main.screenFather {
                 Next.currentAnswer++;
                 Next.currentQuestion++;
                 if(Next.currentQuestion == 22){
+                    Next.currentAnswer = 22;
                     redCurrent = false;
                     Main.game.setScreen(new Next());
                     Question.NextbtnStyle = Main.blueStyle;
@@ -61,11 +62,12 @@ public class Answer extends jpr2.main.screenFather {
                 Next.currentAnswer++;
                 Next.currentQuestion++;
                 if(Next.currentQuestion == 22){
+                    Next.currentAnswer = 22;
                     redCurrent = false;
                     Main.game.setScreen(new Next());
                     Question.NextbtnStyle = Main.blueStyle;
                     Next.start.setStyle(Main.purpleStyle);
-                    setNewPic();
+                    //setNewPic();
                     return;
                 }
                 setNewPic();
@@ -107,6 +109,19 @@ public class Answer extends jpr2.main.screenFather {
             table.setBackground(Main.purpleBackground);
             correct.setStyle(Main.greenStyle);
             incorrect.setStyle(Main.wrongStyle);
+        }
+    }
+
+    public static void changeTeam(boolean redCurrent){
+        if(redCurrent) {
+            Next.currentQuestion = 21;
+
+            Question.freshStart = true;
+        }
+        else {
+            Next.currentQuestion = 42;
+
+            Question.freshStart = true;
         }
     }
 
