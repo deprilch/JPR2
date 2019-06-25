@@ -15,8 +15,8 @@ public class DesktopLauncher {
 		config.width = Gdx.graphics.getWidth();
 		config.height = Gdx.graphics.getHeight();
 
-		/*config.width = 1650;
-		config.height = 1050;*/
+//		config.width = 1650;
+//		config.height = 1050;
 
 		config.title = "Quiz2";
 

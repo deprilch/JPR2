@@ -30,6 +30,7 @@ public class Answer extends jpr2.main.screenFather {
                 }
                 if(Next.currentQuestion == 42){
                     Main.game.setScreen(Main.mainMenu);
+                    Question.freshStart = true;
                     return;
                 }
                 Question.changeColor(Next.currentQuestion, Main.purpleStyle);
@@ -39,9 +40,9 @@ public class Answer extends jpr2.main.screenFather {
                 if(Next.currentQuestion == 22){
                     Next.currentAnswer = 22;
                     redCurrent = false;
+                    Question.freshStart = true;
                     Main.game.setScreen(new Next());
-                    Question.NextbtnStyle = Main.blueStyle;
-                    Next.start.setStyle(Main.blueStyle);
+                    Next.start.setStyle(Main.purpleStyle);
                     setNewPic();
                     return;
                 }
@@ -55,6 +56,7 @@ public class Answer extends jpr2.main.screenFather {
             public void changed (ChangeListener.ChangeEvent event, Actor actor) {
                 if(Next.currentQuestion == 42){
                     Main.game.setScreen(Main.mainMenu);
+                    Question.freshStart = true;
                     return;
                 }
                 Question.changeColor(Next.currentQuestion, Main.purpleStyle);
@@ -64,8 +66,8 @@ public class Answer extends jpr2.main.screenFather {
                 if(Next.currentQuestion == 22){
                     Next.currentAnswer = 22;
                     redCurrent = false;
+                    Question.freshStart = true;
                     Main.game.setScreen(new Next());
-                    Question.NextbtnStyle = Main.blueStyle;
                     Next.start.setStyle(Main.purpleStyle);
                     //setNewPic();
                     return;

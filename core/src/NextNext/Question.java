@@ -12,6 +12,8 @@ import jpr2.main.Main;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import static NextNext.Next.redCurrent;
+
 public class Question extends jpr2.main.screenFather {
 
     public static TextButton[] questButtons;
@@ -20,6 +22,7 @@ public class Question extends jpr2.main.screenFather {
     public static int buttonIds;
     static public Button.ButtonStyle styles = Main.yellowStyle;
     TextButton timer = new TextButton("", Main.menuButton);
+    TextButton next = new TextButton("Далі", Main.menuButton);
 
     Timer timerLeft;
     TimerTask timerTask;
@@ -70,12 +73,41 @@ public class Question extends jpr2.main.screenFather {
             }
         });
 
+        next.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                timerTask.cancel();
+                if(Next.currentQuestion == 42){
+                    Main.game.setScreen(Main.mainMenu);
+                    Question.freshStart = true;
+                    return;
+                }
+                Question.changeColor(Next.currentQuestion, Main.purpleStyle);
+                Question.wrong[Next.currentQuestion] = true;
+                Next.currentAnswer++;
+                Next.currentQuestion++;
+                if(Next.currentQuestion == 22){
+                    Next.currentAnswer = 22;
+                    redCurrent = false;
+                    freshStart = true;
+                    Main.game.setScreen(new Next());
+                    Question.NextbtnStyle = Main.blueStyle;
+                    Next.start.setStyle(Main.purpleStyle);
+                    return;
+                }
+                Main.game.setScreen(new Question());
+            }
+        });
+
         //question
         table.add(new TextButton(Main.nextQuestions[Next.currentQuestion], Main.purpleStyle)).colspan(21).expandY().center();
         table.row();
 
         //table.add(image).colspan(4);
         //table.row();
+
+        table.add(next).size(timerSize,timerSize).center().colspan(21).padBottom(10);
+        table.row();
 
         //timer
         table.add(timer).size(timerSize,timerSize).center().colspan(21).padBottom(10);
@@ -115,7 +147,7 @@ public class Question extends jpr2.main.screenFather {
         if(Gdx.input.isKeyJustPressed(Input.Keys.M)){
             Main.game.setScreen(Main.mainMenu);
         }
-        if(timeLeft == 0){
+        if(timeLeft <= 0){
             timerTask.cancel();
             Answer.changeTeam(Next.redCurrent);
         }
