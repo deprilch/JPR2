@@ -16,7 +16,7 @@ public class screenFather extends ScreenAdapter {
 
     public int standartSize = 60;
     public int bigSize = 150;
-    public int timerSize = 150;
+    public int timerSize = 160;
 
     public screenFather(){
         stage = new Stage(Main.viewport);

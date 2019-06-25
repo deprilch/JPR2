@@ -20,10 +20,11 @@ public class Question extends jpr2.main.screenFather {
     public static int buttonIds;
     static public Button.ButtonStyle styles = Main.yellowStyle;
     TextButton timer = new TextButton("", Main.menuButton);
+    TextButton next = new TextButton("Далi", Main.menuButton);
 
     Timer timerLeft;
     TimerTask timerTask;
-    public int timeConst = 241;
+    public int timeConst = 101;
     public static int timeLeft = 0;
 
     static boolean freshStart = true;
@@ -35,10 +36,17 @@ public class Question extends jpr2.main.screenFather {
     public boolean soundDone = false;
 
     public Question(){
+
+        timerTask = new TimerTask() {
+            @Override
+            public void run() {
+                timeLeft--;
+            }
+        };
+
         timerLeft = new Timer();
         if(freshStart){
         timeLeft = timeConst;
-        freshStart = false;
         }
 
         questButtons = new TextButton[21];
@@ -70,12 +78,37 @@ public class Question extends jpr2.main.screenFather {
             }
         });
 
+        next.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                if(Next.currentQuestion == 42){
+                    Main.game.setScreen(Main.mainMenu);
+                    return;
+                }
+                Question.changeColor(Next.currentQuestion, Main.purpleStyle);
+                Question.wrong[Next.currentQuestion] = true;
+                Next.currentAnswer++;
+                Next.currentQuestion++;
+                if(Next.currentQuestion == 22){
+                    Next.redCurrent = false;
+                    Main.game.setScreen(new Next());
+                    Question.NextbtnStyle = Main.blueStyle;
+                    Next.start.setStyle(Main.purpleStyle);
+                    return;
+                }
+                Main.game.setScreen(new Question());
+            }
+        });
+
         //question
         table.add(new TextButton(Main.nextQuestions[Next.currentQuestion], Main.purpleStyle)).colspan(21).expandY().center();
         table.row();
 
         //table.add(image).colspan(4);
         //table.row();
+
+        table.add(next).size(timerSize,timerSize).center().colspan(21).padBottom(10);
+        table.row();
 
         //timer
         table.add(timer).size(timerSize,timerSize).center().colspan(21).padBottom(10);
@@ -85,13 +118,6 @@ public class Question extends jpr2.main.screenFather {
         for (int s = 0; s < 21; s++){
             table.add(questButtons[s]).padBottom(10).padRight(10).padTop(5).size(standartSize,standartSize);
         }
-
-        timerTask = new TimerTask() {
-            @Override
-            public void run() {
-                timeLeft--;
-            }
-        };
 
     }
 
@@ -136,7 +162,10 @@ public class Question extends jpr2.main.screenFather {
     //try to use show for colors change
     @Override
     public void show() {
-        timerLeft.schedule(timerTask, 0, 1000);
+        if(freshStart){
+            timerLeft.schedule(timerTask, 0, 1000);
+            freshStart = false;
+        }
         soundDone = false;
         Gdx.input.setInputProcessor(stage);
     }

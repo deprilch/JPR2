@@ -28,7 +28,7 @@ public class Answer extends jpr2.main.screenFather {
                 else {
                     Next.blueScore++;
                 }
-                if(Next.currentQuestion == 42){
+                if(Next.currentQuestion == 42 || Question.timeLeft <= 0 ){
                     Main.game.setScreen(Main.mainMenu);
                     return;
                 }
@@ -52,7 +52,7 @@ public class Answer extends jpr2.main.screenFather {
         incorrect.addListener(new ChangeListener() {
             @Override
             public void changed (ChangeListener.ChangeEvent event, Actor actor) {
-                if(Next.currentQuestion == 42){
+                if(Next.currentQuestion == 42 || Question.timeLeft <= 0){
                     Main.game.setScreen(Main.mainMenu);
                     return;
                 }
