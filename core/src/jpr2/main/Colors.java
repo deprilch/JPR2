@@ -8,6 +8,7 @@ public enum  Colors {
     yellow,
     purple,
     blue,
-    wrong
+    wrong,
+    grey
 
 }

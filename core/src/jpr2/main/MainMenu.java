@@ -1,5 +1,6 @@
 package jpr2.main;
 
+import Cubes.Cubes;
 import Konkurses.Quiz.Quiz;
 import Konkurses.Quiz.WhoIsTheFirstTeam;
 import NextNext.Next;
@@ -53,7 +54,7 @@ public class MainMenu extends ScreenAdapter {
 
         quiz = new TextButton("Ребус", Main.menuButton);
         next = new TextButton("Далi-Далi", Main.menuButton);
-        dice = new TextButton("Ребус", Main.menuButton);
+        dice = new TextButton("Ти - менi, я - тобi", Main.menuButton);
         fans = new TextButton("Ребус", Main.menuButton);
         guess = new TextButton("Ребус", Main.menuButton);
         calculateResults = new TextButton("Ребус", Main.menuButton);
@@ -69,6 +70,10 @@ public class MainMenu extends ScreenAdapter {
         menuTable.add(nextQuest[0]).padBottom(10).padRight(10).size(300,btnHeight);
         menuTable.add(nextQuest[1]).padBottom(10).padRight(10).size(300, btnHeight);
         menuTable.row().padRight(10);
+        menuTable.add(dice).padBottom(10).padRight(10).size(btnWidth,btnHeight);
+        menuTable.add(diceQuest[0]).padBottom(10).padRight(10).size(300,btnHeight);
+        menuTable.add(diceQuest[1]).padBottom(10).padRight(10).size(300, btnHeight);
+        menuTable.row().padRight(10);
 
         quiz.addListener(new ChangeListener() {
             @Override
@@ -81,6 +86,12 @@ public class MainMenu extends ScreenAdapter {
             public void changed(ChangeEvent event, Actor actor) {
                 nextQuestClearData();
                 Main.game.setScreen(new Next());
+            }
+        });
+        dice.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                Main.game.setScreen(new Cubes());
             }
         });
 

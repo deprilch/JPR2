@@ -32,6 +32,7 @@ public class Main extends Game {
 	public static TextButton.TextButtonStyle purpleStyle = new TextButton.TextButtonStyle();
 	public static TextButton.TextButtonStyle blueStyle = new TextButton.TextButtonStyle();
 	public static TextButton.TextButtonStyle wrongStyle = new TextButton.TextButtonStyle();
+	public static TextButton.TextButtonStyle greyStyle = new TextButton.TextButtonStyle();
 
 	public static Drawable redBackground, blueBackground, greenBackground, yellowBackground, orangeBackground, purpleBackground;
 
@@ -60,7 +61,9 @@ public class Main extends Game {
 		loader.setButtonStyle(purpleStyle, Colors.purple, font, skinPack);
 		loader.setButtonStyle(blueStyle, Colors.blue, font, skinPack);
 		loader.setButtonStyle(wrongStyle, Colors.wrong, font, skinPack);
+		loader.setButtonStyle(greyStyle, Colors.grey, font, skinPack);
 		loader.setButtonStyle(redTextFieldStyle, Colors.red, font, skinPack);
+
 
 		redBackground = loader.createBackground(redBackground, skinPack, "redStyle");
 		blueBackground = loader.createBackground(blueBackground, skinPack, "blueStyle");

@@ -96,6 +96,10 @@ public class Loader {
                 style.font = font;
                 style.up = skin.getDrawable("wrongStyle");
                 style.over = skin.getDrawable("wrongStyle");
+            case grey:
+                style.font = font;
+                style.up = skin.getDrawable("greyStyle");
+                style.over = skin.getDrawable("greyStyle");
 
         }
 

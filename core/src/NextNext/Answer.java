@@ -14,8 +14,8 @@ import static NextNext.Next.redCurrent;
 
 public class Answer extends jpr2.main.screenFather {
 
-    TextButton correct = new TextButton("Вірно!", Question.NextbtnStyle);
-    TextButton incorrect = new TextButton("Невірно!", Question.NextbtnStyle);
+    TextButton correct = new TextButton("Вірно!", Main.greenStyle);
+    TextButton incorrect = new TextButton("Невірно!", Main.redStyle);
 
     Answer(){
 
@@ -91,26 +91,13 @@ public class Answer extends jpr2.main.screenFather {
         stage.draw();  //only draws
         stage.act();   //only acts
 
-        setBackground();
+        table.setBackground(Main.purpleBackground);
 
         if(Gdx.input.isKeyJustPressed(Input.Keys.Q)){
             Gdx.app.exit();
         }
         if(Gdx.input.isKeyJustPressed(Input.Keys.M)){
             Main.game.setScreen(Main.mainMenu);
-        }
-    }
-
-    public void setBackground(){
-        if(redCurrent){
-            table.setBackground(Main.purpleBackground);
-            correct.setStyle(Main.greenStyle);
-            incorrect.setStyle(Main.wrongStyle);
-        }
-        else {
-            table.setBackground(Main.purpleBackground);
-            correct.setStyle(Main.greenStyle);
-            incorrect.setStyle(Main.wrongStyle);
         }
     }
 
