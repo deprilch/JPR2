@@ -24,7 +24,8 @@ public class Next extends jpr2.main.screenFather {
         }
         else{
             start.setStyle(Main.purpleStyle);
-            start.setText("Команда " + WhoIsTheFirstTeam.secondTeamName + " - тепер граєте ви!");
+            start.setText("Команда " + WhoIsTheFirstTeam.firstTeamName + " набрала " + redScore + " балів\n" +
+                    "Команда " + WhoIsTheFirstTeam.secondTeamName + " - тепер граєте ви!");
         }
 
         table.add(start);
