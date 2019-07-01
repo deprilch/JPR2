@@ -34,7 +34,6 @@ public class MainMenu extends ScreenAdapter {
     public TextButton[] results = new TextButton[2];
 
     public MainMenu(){
-
         menuTable = new Table();
 
         mainMenuStage = new Stage();
@@ -131,6 +130,9 @@ public class MainMenu extends ScreenAdapter {
 
         nextQuest[0].setText(Integer.toString(Next.redScore));
         nextQuest[1].setText(Integer.toString(Next.blueScore));
+
+        diceQuest[0].setText(Integer.toString(Cubes.redScore));
+        diceQuest[1].setText(Integer.toString(Cubes.blueScore));
 
         if(Gdx.input.isKeyJustPressed(Input.Keys.Q)){
             Gdx.app.exit();

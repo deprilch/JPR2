@@ -1,0 +1,6 @@
+﻿#Planet amount
+#Our planet name
+#Capital of Denmark
+#Amount of continents
+#Richest state of USA
+

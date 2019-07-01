@@ -1,5 +1,6 @@
 package jpr2.main;
 
+import Cubes.CubesQuestions;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -10,6 +11,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.utils.viewport.FitViewport;
+
+import java.util.Arrays;
 
 public class Main extends Game {
 
@@ -25,6 +28,14 @@ public class Main extends Game {
 
 	Skin skinPack;
 
+	public static boolean[] displayfirst = new boolean[5];
+	public static boolean[] displaySecond = new boolean[5];
+	public static boolean[] displayThird = new boolean[5];
+	public static boolean[] displayFourth = new boolean[5];
+	public static boolean[] displayFifth = new boolean[5];
+	public static boolean[] displaySix = new boolean[5];
+
+
 	public static TextButton.TextButtonStyle menuButton = new TextButton.TextButtonStyle();
 	public static TextButton.TextButtonStyle greenStyle = new TextButton.TextButtonStyle();
 	public static TextButton.TextButtonStyle redStyle = new TextButton.TextButtonStyle();
@@ -37,12 +48,25 @@ public class Main extends Game {
 	public static Drawable redBackground, blueBackground, greenBackground, yellowBackground, orangeBackground, purpleBackground;
 
 	public static String[] nextQuestions, nextAnswers;
+	public static String[] cubeQuestions1, cubeQuestions2, cubeQuestions3, cubeQuestions4, cubeQuestions5, cubeQuestions6;
+	public static String[] cubeAnswers1, cubeAnswers2, cubeAnswers3, cubeAnswers4, cubeAnswers5, cubeAnswers6;
 
 	public static TextField.TextFieldStyle redTextFieldStyle = new TextField.TextFieldStyle();
 
-
 	@Override
 	public void create () {
+
+		Arrays.fill(displayfirst, true);
+		Arrays.fill(displaySecond, true);
+		Arrays.fill(displayThird, true);
+		Arrays.fill(displayFourth, true);
+		Arrays.fill(displayFifth, true);
+		Arrays.fill(displaySix, true);
+
+		for (int i =0;i<displayfirst.length;i++){
+			System.out.println(displayfirst[i]);
+		}
+
 		camera = new OrthographicCamera();
 		viewport = new FitViewport(1600f, 1000f, camera);
 
@@ -75,13 +99,26 @@ public class Main extends Game {
 		nextQuestions = loader.loadText("NextNext/nextQuestions.txt");
 		nextAnswers = loader.loadText("NextNext/nextAnswers.txt");
 
+		cubeQuestions1 = loader.loadText("Cubes/cubesQuestions1.txt");
+		cubeQuestions2 = loader.loadText("Cubes/cubesQuestions2.txt");
+		cubeQuestions3 = loader.loadText("Cubes/cubesQuestions3.txt");
+		cubeQuestions4 = loader.loadText("Cubes/cubesQuestions4.txt");
+		cubeQuestions5 = loader.loadText("Cubes/cubesQuestions5.txt");
+		cubeQuestions6 = loader.loadText("Cubes/cubesQuestions6.txt");
+
+		cubeAnswers1 = loader.loadText("Cubes/cubesAnswers1.txt");
+		cubeAnswers2 = loader.loadText("Cubes/cubesAnswers2.txt");
+		cubeAnswers3 = loader.loadText("Cubes/cubesAnswers3.txt");
+		cubeAnswers4 = loader.loadText("Cubes/cubesAnswers4.txt");
+		cubeAnswers5 = loader.loadText("Cubes/cubesAnswers5.txt");
+		cubeAnswers6 = loader.loadText("Cubes/cubesAnswers6.txt");
+
 		camera = new OrthographicCamera();
 		viewport = new FitViewport(1600f, 1000f, camera);
 		//camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
 		mainMenu = new MainMenu();
 		game.setScreen(mainMenu);
-
 	}
 	
 	@Override

@@ -38,8 +38,7 @@ public class Loader {
     public String[] loadText(String path){
         FileHandle file = Gdx.files.internal(path);
         String text = file.readString("UTF-8"); //setting charset required for correct font display in builds
-        String[] questNext;
-        questNext = text.split("#");
+        String[] questNext = text.split("#");
 
         for (int i = 0; i < questNext.length; i++){
             String temp;

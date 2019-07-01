@@ -1,7 +1,5 @@
 package Cubes;
 
-import NextNext.Answer;
-import NextNext.Next;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.GL20;
@@ -10,6 +8,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import jpr2.main.Main;
 import jpr2.main.screenFather;
+
+import java.util.Arrays;
 
 public class Cubes extends screenFather {
 
@@ -39,31 +39,37 @@ public class Cubes extends screenFather {
         one.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                Main.game.setScreen(new Questions());
+                Main.game.setScreen(new CubesQuestions(1));
             }
         });
         two.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                Main.game.setScreen(new Questions());
+                Main.game.setScreen(new CubesQuestions(2));
             }
         });
         three.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                Main.game.setScreen(new Questions());
+                Main.game.setScreen(new CubesQuestions(3));
             }
         });
         four.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                Main.game.setScreen(new Questions());
+                Main.game.setScreen(new CubesQuestions(4));
             }
         });
         five.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                Main.game.setScreen(new Questions());
+                Main.game.setScreen(new CubesQuestions(5));
+            }
+        });
+        six.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                Main.game.setScreen(new CubesQuestions(6));
             }
         });
 
@@ -71,7 +77,7 @@ public class Cubes extends screenFather {
 
     @Override
     public void render(float delta) {
-        Gdx.gl.glClearColor(1, 1, 1, 1);
+        Gdx.gl.glClearColor(0, 0, 0, 0);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         stage.draw();  //only draws
@@ -85,6 +91,10 @@ public class Cubes extends screenFather {
         if(Gdx.input.isKeyJustPressed(Input.Keys.M)) {
             Main.game.setScreen(Main.mainMenu);
         }
+    }
 
+    @Override
+    public void show() {
+        Gdx.input.setInputProcessor(stage);
     }
 }

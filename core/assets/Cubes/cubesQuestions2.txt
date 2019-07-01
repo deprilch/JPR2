@@ -1,0 +1,5 @@
+﻿#Burzum
+#Metallica
+#Megadeth
+#Korn
+#deadmau5
