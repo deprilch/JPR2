@@ -1,6 +1,7 @@
 package jpr2.main;
 
 import Cubes.Cubes;
+import Field.FieldIntro;
 import Konkurses.Quiz.Quiz;
 import Konkurses.Quiz.WhoIsTheFirstTeam;
 import NextNext.Next;
@@ -23,14 +24,14 @@ public class MainMenu extends ScreenAdapter {
     public int btnHeight = 80;
 
     private Table menuTable;
-    private TextButton quiz, next, dice, fans, guess, exit, calculateResults, about;
+    private TextButton quiz, next, dice, fans, field, exit, calculateResults, about;
 
     public TextButton quizQuest;
     public TextButton[] quizNames = new TextButton[2];
     public TextButton[] nextQuest = new TextButton[2];
     public TextButton[] diceQuest = new TextButton[2];
     public TextButton[] fansQuest = new TextButton[2];
-    public TextButton[] guessQuest = new TextButton[2];
+    public TextButton[] fieldQuest = new TextButton[2];
     public TextButton[] results = new TextButton[2];
 
     public MainMenu(){
@@ -44,7 +45,7 @@ public class MainMenu extends ScreenAdapter {
             quizNames[i] = new TextButton("", Main.redStyle);
             nextQuest[i] = new TextButton("Hi!", Main.redStyle);
             diceQuest[i] = new TextButton("", Main.redStyle);
-            guessQuest[i] = new TextButton("", Main.redStyle);
+            fieldQuest[i] = new TextButton("", Main.redStyle);
             fansQuest[i] = new TextButton("", Main.redStyle);
             results[i] = new TextButton("", Main.redStyle);
         }
@@ -55,23 +56,27 @@ public class MainMenu extends ScreenAdapter {
         next = new TextButton("Далi-Далi", Main.menuButton);
         dice = new TextButton("Ти - менi, я - тобi", Main.menuButton);
         fans = new TextButton("Ребус", Main.menuButton);
-        guess = new TextButton("Ребус", Main.menuButton);
+        field = new TextButton("Поле", Main.menuButton);
         calculateResults = new TextButton("Ребус", Main.menuButton);
         exit = new TextButton("Ребус", Main.menuButton);
         about = new TextButton("Ребус", Main.menuButton);
 
 
-        menuTable.add(quiz).padBottom(10).padRight(10).size(btnWidth,btnHeight);
-        menuTable.add(quizNames[0]).padBottom(10).padRight(10).size(300,btnHeight);
+        menuTable.add(quiz).padBottom(10).padRight(10).size(btnWidth, btnHeight);
+        menuTable.add(quizNames[0]).padBottom(10).padRight(10).size(300, btnHeight);
         menuTable.add(quizNames[1]).padBottom(10).padRight(10).size(300, btnHeight);
         menuTable.row().padRight(10);
         menuTable.add(next).padBottom(10).padRight(10).size(btnWidth,btnHeight);
-        menuTable.add(nextQuest[0]).padBottom(10).padRight(10).size(300,btnHeight);
+        menuTable.add(nextQuest[0]).padBottom(10).padRight(10).size(300, btnHeight);
         menuTable.add(nextQuest[1]).padBottom(10).padRight(10).size(300, btnHeight);
         menuTable.row().padRight(10);
         menuTable.add(dice).padBottom(10).padRight(10).size(btnWidth,btnHeight);
-        menuTable.add(diceQuest[0]).padBottom(10).padRight(10).size(300,btnHeight);
+        menuTable.add(diceQuest[0]).padBottom(10).padRight(10).size(300, btnHeight);
         menuTable.add(diceQuest[1]).padBottom(10).padRight(10).size(300, btnHeight);
+        menuTable.row().padRight(10);
+        menuTable.add(field).padBottom(10).padRight(10).size(btnWidth,btnHeight);
+        menuTable.add(fieldQuest[0]).padBottom(10).padRight(10).size(300, btnHeight);
+        menuTable.add(fieldQuest[1]).padBottom(10).padRight(10).size(300, btnHeight);
         menuTable.row().padRight(10);
 
         quiz.addListener(new ChangeListener() {
@@ -91,6 +96,12 @@ public class MainMenu extends ScreenAdapter {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 Main.game.setScreen(new Cubes());
+            }
+        });
+        field.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                Main.game.setScreen(new FieldIntro());
             }
         });
 

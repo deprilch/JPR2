@@ -1,6 +1,5 @@
 package jpr2.main;
 
-import Cubes.CubesQuestions;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -62,10 +61,6 @@ public class Main extends Game {
 		Arrays.fill(displayFourth, true);
 		Arrays.fill(displayFifth, true);
 		Arrays.fill(displaySix, true);
-
-		for (int i =0;i<displayfirst.length;i++){
-			System.out.println(displayfirst[i]);
-		}
 
 		camera = new OrthographicCamera();
 		viewport = new FitViewport(1600f, 1000f, camera);
