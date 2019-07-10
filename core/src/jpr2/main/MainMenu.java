@@ -1,6 +1,7 @@
 package jpr2.main;
 
 import Cubes.Cubes;
+import Field.Field;
 import Field.FieldIntro;
 import Konkurses.Quiz.Quiz;
 import Konkurses.Quiz.WhoIsTheFirstTeam;
@@ -101,6 +102,7 @@ public class MainMenu extends ScreenAdapter {
         field.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
+                Field.freshStart = true;
                 Main.game.setScreen(new FieldIntro());
             }
         });
@@ -144,6 +146,9 @@ public class MainMenu extends ScreenAdapter {
 
         diceQuest[0].setText(Integer.toString(Cubes.redScore));
         diceQuest[1].setText(Integer.toString(Cubes.blueScore));
+
+        fieldQuest[0].setText(Integer.toString(Field.redScore));
+        fieldQuest[1].setText(Integer.toString(Field.blueScore));
 
         if(Gdx.input.isKeyJustPressed(Input.Keys.Q)){
             Gdx.app.exit();

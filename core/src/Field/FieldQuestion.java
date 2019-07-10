@@ -1,6 +1,5 @@
 package Field;
 
-import Cubes.CubeAnswer;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.GL20;
@@ -15,7 +14,7 @@ import java.util.TimerTask;
 
 public class FieldQuestion extends screenFather {
 
-    TextButton question = new TextButton("Here goes some question", Main.purpleStyle);
+    TextButton question = new TextButton("", Main.purpleStyle);
 
     Timer timerLeft;
     TimerTask timerTask;
@@ -23,8 +22,15 @@ public class FieldQuestion extends screenFather {
 
     TextButton timer = new TextButton("", Main.menuButton);
 
-    public FieldQuestion(){
+    int number;
+    TextButton.TextButtonStyle color;
 
+    public FieldQuestion(final int number, final TextButton.TextButtonStyle color){
+
+        this.number = number;
+        this.color = color;
+
+        question.setText(Main.fieldQuestions[number]);
         table.add(question);
         table.row();
         table.add(timer).size(timerSize, timerSize);
@@ -32,7 +38,7 @@ public class FieldQuestion extends screenFather {
         timer.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                Main.game.setScreen(new FieldAnswer());
+                Main.game.setScreen(new FieldAnswer(number, color));
             }
         });
 
@@ -57,7 +63,7 @@ public class FieldQuestion extends screenFather {
         setBackground(Main.purpleBackground);
 
         if(timeConst <= 0){
-            Main.game.setScreen(new FieldAnswer());
+            Main.game.setScreen(new FieldAnswer(number, color));
         }
 
         timer.setText(Integer.toString(timeConst));

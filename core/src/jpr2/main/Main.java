@@ -49,8 +49,11 @@ public class Main extends Game {
 	public static String[] nextQuestions, nextAnswers;
 	public static String[] cubeQuestions1, cubeQuestions2, cubeQuestions3, cubeQuestions4, cubeQuestions5, cubeQuestions6;
 	public static String[] cubeAnswers1, cubeAnswers2, cubeAnswers3, cubeAnswers4, cubeAnswers5, cubeAnswers6;
+	public static String[] fieldQuestions, fieldAnswers;
 
 	public static TextField.TextFieldStyle redTextFieldStyle = new TextField.TextFieldStyle();
+
+	public static int redHash, blueHash, yellowHash;
 
 	@Override
 	public void create () {
@@ -83,6 +86,9 @@ public class Main extends Game {
 		loader.setButtonStyle(greyStyle, Colors.grey, font, skinPack);
 		loader.setButtonStyle(redTextFieldStyle, Colors.red, font, skinPack);
 
+		redHash = redStyle.hashCode();
+		yellowHash = yellowStyle.hashCode();
+		blueHash = blueStyle.hashCode();
 
 		redBackground = loader.createBackground(redBackground, skinPack, "redStyle");
 		blueBackground = loader.createBackground(blueBackground, skinPack, "blueStyle");
@@ -107,6 +113,9 @@ public class Main extends Game {
 		cubeAnswers4 = loader.loadText("Cubes/cubesAnswers4.txt");
 		cubeAnswers5 = loader.loadText("Cubes/cubesAnswers5.txt");
 		cubeAnswers6 = loader.loadText("Cubes/cubesAnswers6.txt");
+
+		fieldQuestions = loader.loadText("Field/fieldQuestions.txt");
+		fieldAnswers = loader.loadText("Field/fieldAnswers.txt");
 
 		camera = new OrthographicCamera();
 		viewport = new FitViewport(1600f, 1000f, camera);

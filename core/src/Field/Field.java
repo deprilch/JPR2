@@ -1,6 +1,5 @@
 package Field;
 
-import Cubes.CubeAnswer;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.GL20;
@@ -10,23 +9,37 @@ import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import jpr2.main.Main;
 import jpr2.main.screenFather;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class Field extends screenFather {
+
+    public static int redScore = 0;
+    public static int blueScore = 0;
 
     TextButton[] coloredBtnArray = new TextButton[25];
     TextButton[] btnArray;
 
     Timer timerLeft;
     TimerTask timerTask;
-    public int timeConst = 3;
+    public int timeConst = 0;
 
     TextButton timer = new TextButton("", Main.menuButton);
 
     int btnSize = 150;
+    public static boolean freshStart = true;
+
+    public static ArrayList<Integer> makeGrey = new ArrayList<Integer>();
 
     public Field(){
+
+        if(freshStart){
+            makeGrey.clear();
+            redScore = 0;
+            blueScore = 0;
+        }
 
         for(int i = 1; i < 25; i++){
             if(i == 1 || i == 3 || i == 5 || i == 11 || i == 13 || i == 15 || i == 18 || i == 20){
@@ -43,10 +56,12 @@ public class Field extends screenFather {
                 table.row();
             }
             coloredBtnArray[i].setDisabled(true);
+            final int num = i;
             coloredBtnArray[i].addListener(new ChangeListener() {
                 @Override
                 public void changed(ChangeEvent event, Actor actor) {
-                    Main.game.setScreen(new FieldQuestion());
+                    Main.game.setScreen(new FieldQuestion(num, coloredBtnArray[num].getStyle()));
+                    freshStart = false;
                 }
             });
         }
@@ -66,6 +81,11 @@ public class Field extends screenFather {
                 timeConst--;
             }
         };
+
+        if(freshStart){
+            timeConst = 11;
+            timerLeft.schedule(timerTask, 0,1000);
+        }
     }
 
     public void hideColors(){
@@ -75,6 +95,14 @@ public class Field extends screenFather {
         }
         timerLeft.cancel();
         table.removeActor(timer);
+    }
+
+    public void setMakeGrey(){
+        for (int i = 0; i < makeGrey.size(); i++) {
+            int num = makeGrey.get(i);
+            coloredBtnArray[num].setStyle(Main.greyStyle);
+            coloredBtnArray[num].setDisabled(true);
+        }
     }
 
     @Override
@@ -93,6 +121,10 @@ public class Field extends screenFather {
             hideColors();
         }
 
+        if(!freshStart){
+            setMakeGrey();
+        }
+
         if(Gdx.input.isKeyJustPressed(Input.Keys.Q)){
             Gdx.app.exit();
         }
@@ -103,7 +135,6 @@ public class Field extends screenFather {
 
     @Override
     public void show() {
-        timerLeft.schedule(timerTask, 0,1000);
         Gdx.input.setInputProcessor(stage);
     }
 
