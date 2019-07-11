@@ -1,0 +1,48 @@
+
+blackDices.png
+size: 2048,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+dice1
+  rotate: false
+  xy: 2, 1120
+  size: 557, 557
+  orig: 557, 557
+  offset: 0, 0
+  index: -1
+dice2
+  rotate: false
+  xy: 2, 561
+  size: 557, 557
+  orig: 557, 557
+  offset: 0, 0
+  index: -1
+dice3
+  rotate: false
+  xy: 561, 1120
+  size: 557, 557
+  orig: 557, 557
+  offset: 0, 0
+  index: -1
+dice4
+  rotate: false
+  xy: 2, 2
+  size: 557, 557
+  orig: 557, 557
+  offset: 0, 0
+  index: -1
+dice5
+  rotate: false
+  xy: 561, 561
+  size: 557, 557
+  orig: 557, 557
+  offset: 0, 0
+  index: -1
+dice6
+  rotate: false
+  xy: 1120, 1120
+  size: 557, 557
+  orig: 557, 557
+  offset: 0, 0
+  index: -1
