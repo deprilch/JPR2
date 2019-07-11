@@ -13,6 +13,8 @@ import jpr2.main.Main;
 import jpr2.main.MainMenu;
 import jpr2.main.screenFather;
 
+import static Cubes.CubesQuestions.questionCounter;
+
 public class CubeAnswer extends screenFather {
 
     TextButton redRight = new TextButton(WhoIsTheFirstTeam.firstTeamName, Main.greenStyle);
@@ -25,7 +27,9 @@ public class CubeAnswer extends screenFather {
 
     public static int answerNum;
 
-    public CubeAnswer(){
+    public CubeAnswer(final int block){
+
+        questionCounter += 1;
 
         table.add(new TextButton("Відповідь: " + answers[answerNum], Main.purpleStyle)).colspan(2).center().padBottom(10);
         table.row();
@@ -40,20 +44,41 @@ public class CubeAnswer extends screenFather {
                     @Override
                     public void changed(ChangeListener.ChangeEvent event, Actor actor) {
                         Cubes.redScore += addToScore;
-                        Main.game.setScreen(new Cubes());
+                        if(questionCounter == 5){
+                            Main.displayDices[block - 1] = false;
+                            Main.game.setScreen(new Cubes());
+                            questionCounter = 0;
+                        }
+                        else {
+                            Main.game.setScreen(new CubesQuestions(block));
+                        }
             }
         });
         blueRight.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeListener.ChangeEvent event, Actor actor) {
                 Cubes.blueScore += addToScore;
-                Main.game.setScreen(new Cubes());
+                if(questionCounter == 5){
+                    Main.displayDices[block - 1] = false;
+                    Main.game.setScreen(new Cubes());
+                    questionCounter = 0;
+                }
+                else {
+                    Main.game.setScreen(new CubesQuestions(block));
+                }
             }
         });
         nobodyRight.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeListener.ChangeEvent event, Actor actor) {
-                Main.game.setScreen(new Cubes());
+                if(questionCounter == 5){
+                    Main.displayDices[block - 1] = false;
+                    Main.game.setScreen(new Cubes());
+                    questionCounter = 0;
+                }
+                else {
+                    Main.game.setScreen(new CubesQuestions(block));
+                }
             }
         });
 

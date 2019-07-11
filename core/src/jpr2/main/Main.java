@@ -26,8 +26,10 @@ public class Main extends Game {
 	TextureAtlas menuAtlas;
 
 	Skin skinPack;
+	Skin blackDices;
 
-	public static boolean[] displayfirst = new boolean[5];
+	public static boolean[] displayDices = new boolean[6];
+	public static boolean[] displayFirst = new boolean[5];
 	public static boolean[] displaySecond = new boolean[5];
 	public static boolean[] displayThird = new boolean[5];
 	public static boolean[] displayFourth = new boolean[5];
@@ -44,6 +46,13 @@ public class Main extends Game {
 	public static TextButton.TextButtonStyle wrongStyle = new TextButton.TextButtonStyle();
 	public static TextButton.TextButtonStyle greyStyle = new TextButton.TextButtonStyle();
 
+	public static TextButton.TextButtonStyle oneBlack = new TextButton.TextButtonStyle();
+	public static TextButton.TextButtonStyle twoBlack = new TextButton.TextButtonStyle();
+	public static TextButton.TextButtonStyle threeBlack = new TextButton.TextButtonStyle();
+	public static TextButton.TextButtonStyle fourBlack = new TextButton.TextButtonStyle();
+	public static TextButton.TextButtonStyle fiveBlack = new TextButton.TextButtonStyle();
+	public static TextButton.TextButtonStyle sixBlack = new TextButton.TextButtonStyle();
+
 	public static Drawable redBackground, blueBackground, greenBackground, yellowBackground, orangeBackground, purpleBackground;
 
 	public static String[] nextQuestions, nextAnswers;
@@ -53,17 +62,16 @@ public class Main extends Game {
 
 	public static TextField.TextFieldStyle redTextFieldStyle = new TextField.TextFieldStyle();
 
-	public static int redHash, blueHash, yellowHash;
-
 	@Override
 	public void create () {
 
-		Arrays.fill(displayfirst, true);
+		Arrays.fill(displayFirst, true);
 		Arrays.fill(displaySecond, true);
 		Arrays.fill(displayThird, true);
 		Arrays.fill(displayFourth, true);
 		Arrays.fill(displayFifth, true);
 		Arrays.fill(displaySix, true);
+		Arrays.fill(displayDices, true);
 
 		camera = new OrthographicCamera();
 		viewport = new FitViewport(1600f, 1000f, camera);
@@ -75,6 +83,7 @@ public class Main extends Game {
 
 		font = loader.setFont(font, 1/14f);
 		skinPack = loader.setSkin("Styles/styles.atlas");
+		blackDices = loader.setSkin("Styles/blackDices.atlas");
 
 		loader.setButtonStyle(menuButton, Colors.menu, font, skinPack);
 		loader.setButtonStyle(greenStyle, Colors.green, font, skinPack);
@@ -86,9 +95,12 @@ public class Main extends Game {
 		loader.setButtonStyle(greyStyle, Colors.grey, font, skinPack);
 		loader.setButtonStyle(redTextFieldStyle, Colors.red, font, skinPack);
 
-		redHash = redStyle.hashCode();
-		yellowHash = yellowStyle.hashCode();
-		blueHash = blueStyle.hashCode();
+		loader.setButtonStyle(oneBlack, Colors.oneBlack, font, blackDices);
+		loader.setButtonStyle(twoBlack, Colors.twoBlack, font, blackDices);
+		loader.setButtonStyle(threeBlack, Colors.threeBlack, font, blackDices);
+		loader.setButtonStyle(fourBlack, Colors.fourBlack, font, blackDices);
+		loader.setButtonStyle(fiveBlack, Colors.fiveBlack, font, blackDices);
+		loader.setButtonStyle(sixBlack, Colors.sixBlack, font, blackDices);
 
 		redBackground = loader.createBackground(redBackground, skinPack, "redStyle");
 		blueBackground = loader.createBackground(blueBackground, skinPack, "blueStyle");

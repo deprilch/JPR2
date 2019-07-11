@@ -95,10 +95,41 @@ public class Loader {
                 style.font = font;
                 style.up = skin.getDrawable("wrongStyle");
                 style.over = skin.getDrawable("wrongStyle");
+                return;
             case grey:
                 style.font = font;
                 style.up = skin.getDrawable("greyStyle");
                 style.over = skin.getDrawable("greyStyle");
+                return;
+            case oneBlack:
+                style.font = font;
+                style.up = skin.getDrawable("dice1");
+                style.over = skin.getDrawable("dice1");
+                return;
+            case twoBlack:
+                style.font = font;
+                style.up = skin.getDrawable("dice2");
+                style.over = skin.getDrawable("dice2");
+                return;
+            case threeBlack:
+                style.font = font;
+                style.up = skin.getDrawable("dice3");
+                style.over = skin.getDrawable("dice3");
+                return;
+            case fourBlack:
+                style.font = font;
+                style.up = skin.getDrawable("dice4");
+                style.over = skin.getDrawable("dice4");
+                return;
+            case fiveBlack:
+                style.font = font;
+                style.up = skin.getDrawable("dice5");
+                style.over = skin.getDrawable("dice5");
+                return;
+            case sixBlack:
+                style.font = font;
+                style.up = skin.getDrawable("dice6");
+                style.over = skin.getDrawable("dice6");
 
         }
 

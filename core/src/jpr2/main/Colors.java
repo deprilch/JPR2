@@ -9,6 +9,12 @@ public enum  Colors {
     purple,
     blue,
     wrong,
-    grey
+    grey,
+    oneBlack,
+    twoBlack,
+    threeBlack,
+    fourBlack,
+    fiveBlack,
+    sixBlack
 
 }

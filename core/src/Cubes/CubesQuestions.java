@@ -3,12 +3,16 @@ package Cubes;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import jpr2.main.Main;
 import jpr2.main.screenFather;
+import sun.awt.image.GifImageDecoder;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -46,31 +50,31 @@ public class CubesQuestions extends screenFather {
     public String[] questions;
 
     int block;
+    public static int questionCounter = 0;
 
     public CubesQuestions(int questionBlock){
-
         block = questionBlock;
         bindContent(questionBlock);
 
-        table.add(firstValue).padRight(10).padBottom(10).width(nubmerWidth).height(nubmerHeight);
         table.add(one).padRight(10).padBottom(10).width(nubmerWidth).height(nubmerHeight);
         table.add(firstQuestion).padRight(10).padBottom(10).width(questionWidth).height(QuestionHeight);
+        table.add(firstValue).padRight(10).padBottom(10).width(nubmerWidth).height(nubmerHeight);
         table.row();
-        table.add(secondValue).padRight(10).padBottom(10).width(nubmerWidth).height(nubmerHeight);
         table.add(two).padRight(10).padBottom(10).width(nubmerWidth).height(nubmerHeight);
         table.add(secondQuestion).padRight(10).padBottom(10).width(questionWidth).height(QuestionHeight);
+        table.add(secondValue).padRight(10).padBottom(10).width(nubmerWidth).height(nubmerHeight);
         table.row();
-        table.add(thirdValue).padRight(10).padBottom(10).width(nubmerWidth).height(nubmerHeight);
         table.add(three).padRight(10).padBottom(10).width(nubmerWidth).height(nubmerHeight);
         table.add(thirdQuestion).padRight(10).padBottom(10).width(questionWidth).height(QuestionHeight);
+        table.add(thirdValue).padRight(10).padBottom(10).width(nubmerWidth).height(nubmerHeight);
         table.row();
-        table.add(fouthValue).padRight(10).padBottom(10).width(nubmerWidth).height(nubmerHeight);
         table.add(four).padRight(10).padBottom(10).width(nubmerWidth).height(nubmerHeight);
         table.add(fourthQuestion).padRight(10).padBottom(10).width(questionWidth).height(QuestionHeight);
+        table.add(fouthValue).padRight(10).padBottom(10).width(nubmerWidth).height(nubmerHeight);
         table.row();
-        table.add(fifthValue).padRight(10).padBottom(10).width(nubmerWidth).height(nubmerHeight);
         table.add(five).padRight(10).padBottom(10).width(nubmerWidth).height(nubmerHeight);
         table.add(fifthQuestion).padRight(10).padBottom(10).width(questionWidth).height(QuestionHeight);
+        table.add(fifthValue).padRight(10).padBottom(10).width(nubmerWidth).height(nubmerHeight);
         table.row();
         table.add(timer).height(timerSize).width(timerSize).padTop(50).colspan(3);
 
@@ -89,6 +93,7 @@ public class CubesQuestions extends screenFather {
                 timerLeft.schedule(timerTask, 0, 1000);
                 disableBtns(0);
 
+                firstQuestion.setDisabled(true);
                 secondQuestion.setDisabled(true);
                 thirdQuestion.setDisabled(true);
                 fourthQuestion.setDisabled(true);
@@ -107,6 +112,7 @@ public class CubesQuestions extends screenFather {
                 disableBtns(1);
 
                 firstQuestion.setDisabled(true);
+                secondQuestion.setDisabled(true);
                 thirdQuestion.setDisabled(true);
                 fourthQuestion.setDisabled(true);
                 fifthQuestion.setDisabled(true);
@@ -123,8 +129,9 @@ public class CubesQuestions extends screenFather {
                 timerLeft.schedule(timerTask, 0, 1000);
                 disableBtns(2);
 
-                secondQuestion.setDisabled(true);
                 firstQuestion.setDisabled(true);
+                secondQuestion.setDisabled(true);
+                thirdQuestion.setDisabled(true);
                 fourthQuestion.setDisabled(true);
                 fifthQuestion.setDisabled(true);
             }
@@ -140,9 +147,10 @@ public class CubesQuestions extends screenFather {
                 timerLeft.schedule(timerTask, 0, 1000);
                 disableBtns(3);
 
+                firstQuestion.setDisabled(true);
                 secondQuestion.setDisabled(true);
                 thirdQuestion.setDisabled(true);
-                firstQuestion.setDisabled(true);
+                fourthQuestion.setDisabled(true);
                 fifthQuestion.setDisabled(true);
             }
         });
@@ -157,10 +165,11 @@ public class CubesQuestions extends screenFather {
                 timerLeft.schedule(timerTask, 0, 1000);
                 disableBtns(4);
 
+                firstQuestion.setDisabled(true);
                 secondQuestion.setDisabled(true);
                 thirdQuestion.setDisabled(true);
                 fourthQuestion.setDisabled(true);
-                firstQuestion.setDisabled(true);
+                fifthQuestion.setDisabled(true);
             }
         });
 
@@ -170,7 +179,7 @@ public class CubesQuestions extends screenFather {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 timerTask.cancel();
-                Main.game.setScreen(new CubeAnswer());
+                Main.game.setScreen(new CubeAnswer(block));
             }
         });
 
@@ -214,7 +223,7 @@ public class CubesQuestions extends screenFather {
     public void disableBtns(int questionNum){
         switch (block){
             case 1:
-                Main.displayfirst[questionNum] = false;
+                Main.displayFirst[questionNum] = false;
                 return;
             case 2:
                 Main.displaySecond[questionNum] = false;
@@ -237,27 +246,27 @@ public class CubesQuestions extends screenFather {
     public void setBtnLight(){
         switch (block){
             case 1:
-                if(!Main.displayfirst[0]){
+                if(!Main.displayFirst[0]){
                     firstQuestion.setDisabled(true);
                     firstQuestion.setStyle(Main.greyStyle);
                     setPlaceHolder(firstQuestion);
                 }
-                if(!Main.displayfirst[1]){
+                if(!Main.displayFirst[1]){
                     secondQuestion.setDisabled(true);
                     secondQuestion.setStyle(Main.greyStyle);
                     setPlaceHolder(secondQuestion);
                 }
-                if(!Main.displayfirst[2]){
+                if(!Main.displayFirst[2]){
                     thirdQuestion.setDisabled(true);
                     thirdQuestion.setStyle(Main.greyStyle);
                     setPlaceHolder(thirdQuestion);
                 }
-                if(!Main.displayfirst[3]){
+                if(!Main.displayFirst[3]){
                     fourthQuestion.setDisabled(true);
                     fourthQuestion.setStyle(Main.greyStyle);
                     setPlaceHolder(fourthQuestion);
                 }
-                if(!Main.displayfirst[4]){
+                if(!Main.displayFirst[4]){
                     fifthQuestion.setDisabled(true);
                     fifthQuestion.setStyle(Main.greyStyle);
                     setPlaceHolder(fifthQuestion);
@@ -427,7 +436,7 @@ public class CubesQuestions extends screenFather {
 
         if(timeConst <= 0){
             timerTask.cancel();
-            Main.game.setScreen(new CubeAnswer());
+            Main.game.setScreen(new CubeAnswer(block));
         }
     }
 

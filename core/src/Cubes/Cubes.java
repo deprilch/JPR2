@@ -9,22 +9,20 @@ import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import jpr2.main.Main;
 import jpr2.main.screenFather;
 
-import java.util.Arrays;
-
 public class Cubes extends screenFather {
 
     public static int redScore = 0;
     public static int blueScore = 0;
 
     int width = 200;
-    int height = 100;
+    int height = 200;
 
-    TextButton one = new TextButton("one", Main.menuButton);
-    TextButton two = new TextButton("two", Main.menuButton);
-    TextButton three = new TextButton("three", Main.menuButton);
-    TextButton four = new TextButton("four", Main.menuButton);
-    TextButton five = new TextButton("five", Main.menuButton);
-    TextButton six = new TextButton("six", Main.menuButton);
+    TextButton one = new TextButton("", Main.oneBlack);
+    TextButton two = new TextButton("", Main.twoBlack);
+    TextButton three = new TextButton("", Main.threeBlack);
+    TextButton four = new TextButton("", Main.fourBlack);
+    TextButton five = new TextButton("", Main.fiveBlack);
+    TextButton six = new TextButton("", Main.sixBlack);
 
     public Cubes(){
 
@@ -73,6 +71,34 @@ public class Cubes extends screenFather {
             }
         });
 
+        disableBtns();
+    }
+
+    public void disableBtns(){
+        if(!Main.displayDices[0]){
+            one.setDisabled(true);
+            one.setStyle(Main.greyStyle);
+        }
+        if(!Main.displayDices[1]){
+            two.setDisabled(true);
+            two.setStyle(Main.greyStyle);
+        }
+        if(!Main.displayDices[2]){
+            three.setDisabled(true);
+            three.setStyle(Main.greyStyle);
+        }
+        if(!Main.displayDices[3]){
+            four.setDisabled(true);
+            four.setStyle(Main.greyStyle);
+        }
+        if(!Main.displayDices[4]){
+            five.setDisabled(true);
+            five.setStyle(Main.greyStyle);
+        }
+        if(!Main.displayDices[5]){
+            six.setDisabled(true);
+            six.setStyle(Main.greyStyle);
+        }
     }
 
     @Override

@@ -19,6 +19,7 @@ public class Question extends jpr2.main.screenFather {
     public static TextButton[] questButtons;
     public static boolean[] green = new boolean[43];
     public static boolean[] wrong = new boolean[43];
+    public static boolean[] skiped = new boolean[43];
     public static int buttonIds;
     static public Button.ButtonStyle styles = Main.yellowStyle;
     TextButton timer = new TextButton("", Main.menuButton);
@@ -54,6 +55,9 @@ public class Question extends jpr2.main.screenFather {
                 if(wrong[i+1]) {
                     questButtons[i].setStyle(Main.redStyle);
                 }
+                if(skiped[i+1]) {
+                    questButtons[i].setStyle(Main.purpleStyle);
+                }
             }
             if(Next.currentQuestion > 22){
                 if(green[i+1 + 21]){
@@ -61,6 +65,9 @@ public class Question extends jpr2.main.screenFather {
                 }
                 if(wrong[i+1 + 21]) {
                     questButtons[i].setStyle(Main.redStyle);
+                }
+                if(skiped[i+1 + 21]) {
+                    questButtons[i].setStyle(Main.purpleStyle);
                 }
             }
         }
@@ -83,7 +90,7 @@ public class Question extends jpr2.main.screenFather {
                     return;
                 }
                 Question.changeColor(Next.currentQuestion, Main.purpleStyle);
-                Question.wrong[Next.currentQuestion] = true;
+                Question.skiped[Next.currentQuestion] = true;
                 Next.currentAnswer++;
                 Next.currentQuestion++;
                 if(Next.currentQuestion == 22){
