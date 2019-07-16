@@ -61,6 +61,7 @@ public class Main extends Game {
 	public static String[] fieldQuestions, fieldAnswers;
 
 	public static TextField.TextFieldStyle redTextFieldStyle = new TextField.TextFieldStyle();
+	public static TextField.TextFieldStyle greenTextFieldStyle = new TextField.TextFieldStyle();
 
 	@Override
 	public void create () {
@@ -94,6 +95,7 @@ public class Main extends Game {
 		loader.setButtonStyle(wrongStyle, Colors.wrong, font, skinPack);
 		loader.setButtonStyle(greyStyle, Colors.grey, font, skinPack);
 		loader.setButtonStyle(redTextFieldStyle, Colors.red, font, skinPack);
+		loader.setButtonStyle(greenTextFieldStyle, Colors.green, font, skinPack);
 
 		loader.setButtonStyle(oneBlack, Colors.oneBlack, font, blackDices);
 		loader.setButtonStyle(twoBlack, Colors.twoBlack, font, blackDices);
