@@ -1,6 +1,6 @@
 package jpr2.main;
 
-public enum  Colors {
+public enum Colors {
 
     menu,
     red,

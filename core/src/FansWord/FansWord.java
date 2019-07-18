@@ -1,96 +1,68 @@
 package FansWord;
 
+import Konkurses.Quiz.WhoIsTheFirstTeam;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField;
+import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import jpr2.main.Main;
 import jpr2.main.screenFather;
 
+import java.util.ArrayList;
+
 public class FansWord extends screenFather {
 
-    int fieldWidth = 300;
-    int fieldHeight = 100;
+    private int letterWidth = 50;
+    private int fieldWidth = 300;
+    private int fieldHeight = 100;
 
-    TextButton redLetterOne = new TextButton("С", Main.redStyle);
-    TextButton redLetterTwo = new TextButton("К", Main.redStyle);
-    TextButton redLetterThree = new TextButton("Л", Main.redStyle);
-    TextButton redLetterFour = new TextButton("Е", Main.redStyle);
-    TextButton redLetterFive = new TextButton("Р", Main.redStyle);
-    TextButton redLetterSix = new TextButton("А", Main.redStyle);
+    TextButton firstTeam = new TextButton(WhoIsTheFirstTeam.firstTeamName, Main.redStyle);
+    TextButton secondTeam = new TextButton(WhoIsTheFirstTeam.secondTeamName, Main.greenStyle);
 
-    TextField redFieldOne = new TextField("", Main.redTextFieldStyle);
-    TextField redFieldTwo = new TextField("", Main.redTextFieldStyle);
-    TextField redFieldThree = new TextField("", Main.redTextFieldStyle);
-    TextField redFieldFour = new TextField("", Main.redTextFieldStyle);
-    TextField redFieldFive = new TextField("", Main.redTextFieldStyle);
-    TextField redFieldSix = new TextField("", Main.redTextFieldStyle);
+    TextButton submit = new TextButton("Готово", Main.wrongStyle);
 
-    TextButton blueLetterOne = new TextButton("С", Main.greenStyle);
-    TextButton blueLetterTwo = new TextButton("К", Main.greenStyle);
-    TextButton blueLetterThree = new TextButton("Л", Main.greenStyle);
-    TextButton blueLetterFour = new TextButton("Е", Main.greenStyle);
-    TextButton blueLetterFive = new TextButton("Р", Main.greenStyle);
-    TextButton blueLetterSix = new TextButton("А", Main.greenStyle);
-
-    TextField blueFieldOne = new TextField("", Main.greenTextFieldStyle);
-    TextField blueFieldTwo = new TextField("", Main.greenTextFieldStyle);
-    TextField blueFieldThree = new TextField("", Main.greenTextFieldStyle);
-    TextField blueFieldFour = new TextField("", Main.greenTextFieldStyle);
-    TextField blueFieldFive = new TextField("", Main.greenTextFieldStyle);
-    TextField blueFieldSix = new TextField("", Main.greenTextFieldStyle);
+    ArrayList<TextButton> redLetters = new ArrayList<TextButton>();
+    ArrayList<TextButton> blueLetters = new ArrayList<TextButton>();
+    ArrayList<TextField> redFields = new ArrayList<TextField>();
+    ArrayList<TextField> blueFields = new ArrayList<TextField>();
+    private char[] word = {'С', 'К', 'Л', 'Е', 'Р', 'А'};
+    public static int redScore = 0;
+    public static int blueScore = 0;
 
     public FansWord()
     {
-
-        table.add(redLetterOne).size(fieldHeight, fieldHeight).padBottom(10);
-        table.add(redFieldOne).size(fieldWidth, fieldHeight).padBottom(10);
-
-        table.add(blueLetterOne).size(fieldHeight, fieldHeight).padBottom(10);
-        table.add(blueFieldOne).size(fieldWidth, fieldHeight).padBottom(10);
-
+        table.add(firstTeam).padRight(10).padBottom(10).size(letterWidth + fieldWidth, fieldHeight).colspan(2);
+        table.add(secondTeam).padBottom(10).size(letterWidth + fieldWidth, fieldHeight).colspan(2);
         table.row();
 
-        table.add(redLetterTwo).size(fieldHeight, fieldHeight).padBottom(10);
-        table.add(redFieldTwo).size(fieldWidth, fieldHeight).padBottom(10);
+        for (int i = 0; i < 6; i++) {
+            redLetters.add(new TextButton(String.valueOf(word[i]), Main.redStyle));
+            blueLetters.add(new TextButton(String.valueOf(word[i]), Main.greenStyle));
+            redFields.add(new TextField("", Main.redTextFieldStyle));
+            blueFields.add(new TextField("", Main.greenTextFieldStyle));
 
-        table.add(blueLetterTwo).size(fieldHeight, fieldHeight).padBottom(10);
-        table.add(blueFieldTwo).size(fieldWidth, fieldHeight).padBottom(10);
+            table.add(redLetters.get(i)).size(letterWidth, fieldHeight).padBottom(10);
+            table.add(redFields.get(i)).size(fieldWidth, fieldHeight).padBottom(10).padRight(10);
 
-        table.row();
+            table.add(blueLetters.get(i)).size(letterWidth, fieldHeight).padBottom(10);
+            table.add(blueFields.get(i)).size(fieldWidth, fieldHeight).padBottom(10);
 
-        table.add(redLetterThree).size(fieldHeight, fieldHeight).padBottom(10);
-        table.add(redFieldThree).size(fieldWidth, fieldHeight).padBottom(10);
+            table.row();
+        }
+        table.add(submit).colspan(4).center().size(200, 100);
 
-        table.add(blueLetterThree).size(fieldHeight, fieldHeight).padBottom(10);
-        table.add(blueFieldThree).size(fieldWidth, fieldHeight).padBottom(10);
+        submit.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                Main.game.setScreen(Main.mainMenu);
+            }
+        });
+    }
 
-        table.row();
-
-        table.add(redLetterFour).size(fieldHeight, fieldHeight).padBottom(10);
-        table.add(redFieldFour).size(fieldWidth, fieldHeight).padBottom(10);
-
-        table.add(blueLetterFour).size(fieldHeight, fieldHeight).padBottom(10);
-        table.add(blueFieldFour).size(fieldWidth, fieldHeight).padBottom(10);
-
-        table.row();
-
-        table.add(redLetterFive).size(fieldHeight, fieldHeight).padBottom(10);
-        table.add(redFieldFive).size(fieldWidth, fieldHeight).padBottom(10);
-
-        table.add(blueLetterFive).size(fieldHeight, fieldHeight).padBottom(10);
-        table.add(blueFieldFive).size(fieldWidth, fieldHeight).padBottom(10);
-
-        table.row();
-
-        table.add(redLetterSix).size(fieldHeight, fieldHeight).padBottom(10);
-        table.add(redFieldSix).size(fieldWidth, fieldHeight).padBottom(10);
-
-        table.add(blueLetterSix).size(fieldHeight, fieldHeight).padBottom(10);
-        table.add(blueFieldSix).size(fieldWidth, fieldHeight).padBottom(10);
-
-        table.row();
+    public void calculateScore(){
 
     }
 

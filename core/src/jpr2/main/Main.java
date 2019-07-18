@@ -80,8 +80,6 @@ public class Main extends Game {
 		game = this;
 		loader = new Loader();
 
-		//menuSkin = loader.setSkin("menuPack.atlas");
-
 		font = loader.setFont(font, 1/14f);
 		skinPack = loader.setSkin("Styles/styles.atlas");
 		blackDices = loader.setSkin("Styles/blackDices.atlas");
@@ -94,8 +92,8 @@ public class Main extends Game {
 		loader.setButtonStyle(blueStyle, Colors.blue, font, skinPack);
 		loader.setButtonStyle(wrongStyle, Colors.wrong, font, skinPack);
 		loader.setButtonStyle(greyStyle, Colors.grey, font, skinPack);
-		loader.setButtonStyle(redTextFieldStyle, Colors.red, font, skinPack);
-		loader.setButtonStyle(greenTextFieldStyle, Colors.green, font, skinPack);
+		loader.setFieldStyle(redTextFieldStyle, Colors.red, font, skinPack);
+		loader.setFieldStyle(greenTextFieldStyle, Colors.green, font, skinPack);
 
 		loader.setButtonStyle(oneBlack, Colors.oneBlack, font, blackDices);
 		loader.setButtonStyle(twoBlack, Colors.twoBlack, font, blackDices);

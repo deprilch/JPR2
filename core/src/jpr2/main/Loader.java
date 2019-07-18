@@ -70,6 +70,7 @@ public class Loader {
                 style.font = font;
                 style.up = skin.getDrawable("greenStyle");
                 style.over = skin.getDrawable("greenStyle");
+                System.out.println("DONE");
                 return;
             case red:
                 style.font = font;
@@ -130,12 +131,11 @@ public class Loader {
                 style.font = font;
                 style.up = skin.getDrawable("dice6");
                 style.over = skin.getDrawable("dice6");
-
         }
 
     }
 
-    public void setButtonStyle(TextField.TextFieldStyle style, Colors color, BitmapFont font, Skin skin) {
+    public void setFieldStyle(TextField.TextFieldStyle style, Colors color, BitmapFont font, Skin skin) {
 
         style.fontColor = Color.WHITE;
 
@@ -143,6 +143,10 @@ public class Loader {
             case red:
                 style.font = font;
                 style.background = skin.getDrawable("redStyle");
+                return;
+            case green:
+                style.font = font;
+                style.background = skin.getDrawable("greenStyle");
                 return;
         }
 
