@@ -34,6 +34,10 @@ public class FansWord extends screenFather {
 
     public FansWord()
     {
+
+        redScore = 0;
+        blueScore = 0;
+
         table.add(firstTeam).padRight(10).padBottom(10).size(letterWidth + fieldWidth, fieldHeight).colspan(2);
         table.add(secondTeam).padBottom(10).size(letterWidth + fieldWidth, fieldHeight).colspan(2);
         table.row();
@@ -57,13 +61,27 @@ public class FansWord extends screenFather {
         submit.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
+                calculateScore();
                 Main.game.setScreen(Main.mainMenu);
             }
         });
     }
 
     public void calculateScore(){
+        for (int i = 0; i < 6; i++) {
+            if(redFields.get(i).getText().equals("")){
 
+            }
+            else {
+                redScore++;
+            }
+            if(blueFields.get(i).getText().equals("")){
+
+            }
+            else {
+                blueScore++;
+            }
+        }
     }
 
     @Override
@@ -75,13 +93,6 @@ public class FansWord extends screenFather {
         stage.act();   //only acts
 
         setBackground(Main.purpleBackground);
-
-        if(Gdx.input.isKeyJustPressed(Input.Keys.Q)){
-            Gdx.app.exit();
-        }
-        if(Gdx.input.isKeyJustPressed(Input.Keys.M)) {
-            Main.game.setScreen(Main.mainMenu);
-        }
     }
 
     @Override

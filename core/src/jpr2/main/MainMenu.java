@@ -161,6 +161,9 @@ public class MainMenu extends ScreenAdapter {
         fieldQuest[0].setText(Integer.toString(Field.redScore));
         fieldQuest[1].setText(Integer.toString(Field.blueScore));
 
+        fansWordQuest[0].setText(Integer.toString(FansWord.redScore));
+        fansWordQuest[1].setText(Integer.toString(FansWord.blueScore));
+
         if(Gdx.input.isKeyJustPressed(Input.Keys.Q)){
             Gdx.app.exit();
         }
