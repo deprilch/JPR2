@@ -2,6 +2,7 @@ package jpr2.main;
 
 import Cubes.Cubes;
 import FansWord.FansWord;
+import FansWordBlocks.FansWordBlocks;
 import Field.Field;
 import Field.FieldIntro;
 import Konkurses.Quiz.Quiz;
@@ -26,13 +27,14 @@ public class MainMenu extends ScreenAdapter {
     public int btnHeight = 80;
 
     private Table menuTable;
-    private TextButton quiz, next, dice, fansWord, field, exit, calculateResults, about;
+    private TextButton quiz, next, dice, fansWord, fansWordBlock, field, exit, calculateResults, about;
 
     public TextButton quizQuest;
     public TextButton[] quizNames = new TextButton[2];
     public TextButton[] nextQuest = new TextButton[2];
     public TextButton[] diceQuest = new TextButton[2];
     public TextButton[] fansWordQuest = new TextButton[2];
+    public TextButton[] fansWordBlocks = new TextButton[2];
     public TextButton[] fieldQuest = new TextButton[2];
     public TextButton[] results = new TextButton[2];
 
@@ -50,6 +52,7 @@ public class MainMenu extends ScreenAdapter {
             fieldQuest[i] = new TextButton("", Main.redStyle);
             fansWordQuest[i] = new TextButton("", Main.redStyle);
             results[i] = new TextButton("", Main.redStyle);
+            fansWordBlocks[i] = new TextButton("", Main.redStyle);
         }
 
         quizQuest = new TextButton("Quiz", Main.menuButton);
@@ -58,6 +61,7 @@ public class MainMenu extends ScreenAdapter {
         next = new TextButton("Далi-Далi", Main.menuButton);
         dice = new TextButton("Ти - менi, я - тобi", Main.menuButton);
         fansWord = new TextButton("Word", Main.menuButton);
+        fansWordBlock = new TextButton("Знайди зайве", Main.menuButton);
         field = new TextButton("Поле", Main.menuButton);
         calculateResults = new TextButton("Ребус", Main.menuButton);
         exit = new TextButton("Ребус", Main.menuButton);
@@ -79,6 +83,10 @@ public class MainMenu extends ScreenAdapter {
         menuTable.add(fansWord).padBottom(10).padRight(10).size(btnWidth, btnHeight);
         menuTable.add(fansWordQuest[0]).padBottom(10).padRight(10).size(300, btnHeight);
         menuTable.add(fansWordQuest[1]).padBottom(10).padRight(10).size(300, btnHeight);
+        menuTable.row();
+        menuTable.add(fansWordBlock).padBottom(10).padRight(10).size(btnWidth, btnHeight);
+        menuTable.add(fansWordBlocks[0]).padBottom(10).padRight(10).size(300, btnHeight);
+        menuTable.add(fansWordBlocks[1]).padBottom(10).padRight(10).size(300, btnHeight);
         menuTable.row();
         menuTable.add(field).padBottom(10).padRight(10).size(btnWidth,btnHeight);
         menuTable.add(fieldQuest[0]).padBottom(10).padRight(10).size(300, btnHeight);
@@ -115,6 +123,12 @@ public class MainMenu extends ScreenAdapter {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 Main.game.setScreen(new FansWord());
+            }
+        });
+        fansWordBlock.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                Main.game.setScreen(new FansWordBlocks());
             }
         });
 
@@ -163,6 +177,9 @@ public class MainMenu extends ScreenAdapter {
 
         fansWordQuest[0].setText(Integer.toString(FansWord.redScore));
         fansWordQuest[1].setText(Integer.toString(FansWord.blueScore));
+
+        fansWordBlocks[0].setText(Integer.toString(FansWordBlocks.redScore));
+        fansWordBlocks[1].setText(Integer.toString(FansWordBlocks.blueScore));
 
         if(Gdx.input.isKeyJustPressed(Input.Keys.Q)){
             Gdx.app.exit();

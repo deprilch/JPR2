@@ -36,7 +36,6 @@ public class Main extends Game {
 	public static boolean[] displayFifth = new boolean[5];
 	public static boolean[] displaySix = new boolean[5];
 
-
 	public static TextButton.TextButtonStyle menuButton = new TextButton.TextButtonStyle();
 	public static TextButton.TextButtonStyle greenStyle = new TextButton.TextButtonStyle();
 	public static TextButton.TextButtonStyle redStyle = new TextButton.TextButtonStyle();
@@ -59,6 +58,9 @@ public class Main extends Game {
 	public static String[] cubeQuestions1, cubeQuestions2, cubeQuestions3, cubeQuestions4, cubeQuestions5, cubeQuestions6;
 	public static String[] cubeAnswers1, cubeAnswers2, cubeAnswers3, cubeAnswers4, cubeAnswers5, cubeAnswers6;
 	public static String[] fieldQuestions, fieldAnswers;
+
+	//FansWordBlocks data
+	public static String[] firstTeamB1, firstTeamB2, firstTeamB3, secondTeamB1, secondTeamB2, secondTeamB3;
 
 	public static TextField.TextFieldStyle redTextFieldStyle = new TextField.TextFieldStyle();
 	public static TextField.TextFieldStyle greenTextFieldStyle = new TextField.TextFieldStyle();
@@ -128,6 +130,15 @@ public class Main extends Game {
 
 		fieldQuestions = loader.loadText("Field/fieldQuestions.txt");
 		fieldAnswers = loader.loadText("Field/fieldAnswers.txt");
+
+		firstTeamB1 = loader.loadText("FansWordBlocks/firstTeam/firstBlock.txt");
+		firstTeamB2 = loader.loadText("FansWordBlocks/firstTeam/secondBlock.txt");
+		firstTeamB3 = loader.loadText("FansWordBlocks/firstTeam/thirdBlock.txt");
+
+		secondTeamB1 = loader.loadText("FansWordBlocks/secondTeam/firstBlock.txt");
+		secondTeamB2 = loader.loadText("FansWordBlocks/secondTeam/secondBlock.txt");
+		secondTeamB3 = loader.loadText("FansWordBlocks/secondTeam/thirdBlock.txt");
+
 
 		camera = new OrthographicCamera();
 		viewport = new FitViewport(1600f, 1000f, camera);
