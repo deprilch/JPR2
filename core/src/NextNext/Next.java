@@ -52,13 +52,4 @@ public class Next extends jpr2.main.screenFather {
             Main.game.setScreen(new Question());
         }
     }
-
-    public void setBackground(){
-        if(redCurrent){
-            //table.setBackground(Main.redBackground);
-        }
-        else {
-            //table.setBackground(main.blueBackground);
-        }
-    }
 }

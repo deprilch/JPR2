@@ -379,6 +379,7 @@ public class CubesQuestions extends screenFather {
                     fifthQuestion.setStyle(Main.greyStyle);
                     setPlaceHolder(fifthQuestion);
                 }
+                return;
             case 6:
                 if(!Main.displaySix[0]){
                     firstQuestion.setDisabled(true);
@@ -405,8 +406,6 @@ public class CubesQuestions extends screenFather {
                     fifthQuestion.setStyle(Main.greyStyle);
                     setPlaceHolder(fifthQuestion);
                 }
-
-
         }
     }
 

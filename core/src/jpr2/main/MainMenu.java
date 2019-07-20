@@ -128,6 +128,9 @@ public class MainMenu extends ScreenAdapter {
         fansWordBlock.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
+                FansWordBlocks.currentBlock = 1;
+                FansWordBlocks.redScore = 0;
+                FansWordBlocks.blueScore = 0;
                 Main.game.setScreen(new FansWordBlocks());
             }
         });
