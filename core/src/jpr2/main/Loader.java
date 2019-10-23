@@ -17,7 +17,7 @@ public class Loader {
     Image image;
     public BitmapFont setFont(BitmapFont font, float size) {
         final String font_chars = "№’«»^*єЄіІїЇабвгдежзийклмнопрстуфхцчшщъыьэюяabcdefghijklmnopqrstuvwxyzАБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789][_!$%#@|\\/?-+=()*&.;:,{}\"´`'<>";
-        FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("BloggerSans.ttf"));
+        FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("assets/BloggerSans.ttf"));
         FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
         parameter.characters = font_chars;
         //font is 1/12 of any screen resolution

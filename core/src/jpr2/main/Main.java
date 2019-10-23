@@ -58,6 +58,7 @@ public class Main extends Game {
 	public static String[] cubeQuestions1, cubeQuestions2, cubeQuestions3, cubeQuestions4, cubeQuestions5, cubeQuestions6;
 	public static String[] cubeAnswers1, cubeAnswers2, cubeAnswers3, cubeAnswers4, cubeAnswers5, cubeAnswers6;
 	public static String[] fieldQuestions, fieldAnswers;
+	public static String[] blackBoxQuestions, blackBoxAnswers, blackBoxFirstHints, blackBoxSecondHints;
 
 	//FansWordBlocks data
 	public static String[] firstTeamB1, firstTeamB2, firstTeamB3, secondTeamB1, secondTeamB2, secondTeamB3;
@@ -83,8 +84,8 @@ public class Main extends Game {
 		loader = new Loader();
 
 		font = loader.setFont(font, 1/14f);
-		skinPack = loader.setSkin("Styles/styles.atlas");
-		blackDices = loader.setSkin("Styles/blackDices.atlas");
+		skinPack = loader.setSkin("assets/Styles/styles.atlas");
+		blackDices = loader.setSkin("assets/Styles/blackDices.atlas");
 
 		loader.setButtonStyle(menuButton, Colors.menu, font, skinPack);
 		loader.setButtonStyle(greenStyle, Colors.green, font, skinPack);
@@ -111,33 +112,36 @@ public class Main extends Game {
 		orangeBackground = loader.createBackground(orangeBackground, skinPack, "orangeStyle");
 		purpleBackground = loader.createBackground(purpleBackground, skinPack, "purpleStyle");
 
-		nextQuestions = loader.loadText("NextNext/nextQuestions.txt");
-		nextAnswers = loader.loadText("NextNext/nextAnswers.txt");
+		nextQuestions = loader.loadText("assets/NextNext/nextQuestions.txt");
+		nextAnswers = loader.loadText("assets/NextNext/nextAnswers.txt");
 
-		cubeQuestions1 = loader.loadText("Cubes/cubesQuestions1.txt");
-		cubeQuestions2 = loader.loadText("Cubes/cubesQuestions2.txt");
-		cubeQuestions3 = loader.loadText("Cubes/cubesQuestions3.txt");
-		cubeQuestions4 = loader.loadText("Cubes/cubesQuestions4.txt");
-		cubeQuestions5 = loader.loadText("Cubes/cubesQuestions5.txt");
-		cubeQuestions6 = loader.loadText("Cubes/cubesQuestions6.txt");
+		cubeQuestions1 = loader.loadText("assets/Cubes/cubesQuestions1.txt");
+		cubeQuestions2 = loader.loadText("assets/Cubes/cubesQuestions2.txt");
+		cubeQuestions3 = loader.loadText("assets/Cubes/cubesQuestions3.txt");
+		cubeQuestions4 = loader.loadText("assets/Cubes/cubesQuestions4.txt");
+		cubeQuestions5 = loader.loadText("assets/Cubes/cubesQuestions5.txt");
+		cubeQuestions6 = loader.loadText("assets/Cubes/cubesQuestions6.txt");
 
-		cubeAnswers1 = loader.loadText("Cubes/cubesAnswers1.txt");
-		cubeAnswers2 = loader.loadText("Cubes/cubesAnswers2.txt");
-		cubeAnswers3 = loader.loadText("Cubes/cubesAnswers3.txt");
-		cubeAnswers4 = loader.loadText("Cubes/cubesAnswers4.txt");
-		cubeAnswers5 = loader.loadText("Cubes/cubesAnswers5.txt");
-		cubeAnswers6 = loader.loadText("Cubes/cubesAnswers6.txt");
+		cubeAnswers1 = loader.loadText("assets/Cubes/cubesAnswers1.txt");
+		cubeAnswers2 = loader.loadText("assets/Cubes/cubesAnswers2.txt");
+		cubeAnswers3 = loader.loadText("assets/Cubes/cubesAnswers3.txt");
+		cubeAnswers4 = loader.loadText("assets/Cubes/cubesAnswers4.txt");
+		cubeAnswers5 = loader.loadText("assets/Cubes/cubesAnswers5.txt");
+		cubeAnswers6 = loader.loadText("assets/Cubes/cubesAnswers6.txt");
 
-		fieldQuestions = loader.loadText("Field/fieldQuestions.txt");
-		fieldAnswers = loader.loadText("Field/fieldAnswers.txt");
+		blackBoxQuestions = loader.loadText("assets/BlackBox/blackBoxQuestions.txt");
+		blackBoxAnswers = loader.loadText("assets/BlackBox/blackBoxAnswers.txt");
 
-		firstTeamB1 = loader.loadText("FansWordBlocks/firstTeam/firstBlock.txt");
-		firstTeamB2 = loader.loadText("FansWordBlocks/firstTeam/secondBlock.txt");
-		firstTeamB3 = loader.loadText("FansWordBlocks/firstTeam/thirdBlock.txt");
+		fieldQuestions = loader.loadText("assets/Field/fieldQuestions.txt");
+		fieldAnswers = loader.loadText("assets/Field/fieldAnswers.txt");
 
-		secondTeamB1 = loader.loadText("FansWordBlocks/secondTeam/firstBlock.txt");
-		secondTeamB2 = loader.loadText("FansWordBlocks/secondTeam/secondBlock.txt");
-		secondTeamB3 = loader.loadText("FansWordBlocks/secondTeam/thirdBlock.txt");
+		firstTeamB1 = loader.loadText("assets/FansWordBlocks/firstTeam/firstBlock.txt");
+		firstTeamB2 = loader.loadText("assets/FansWordBlocks/firstTeam/secondBlock.txt");
+		firstTeamB3 = loader.loadText("assets/FansWordBlocks/firstTeam/thirdBlock.txt");
+
+		secondTeamB1 = loader.loadText("assets/FansWordBlocks/secondTeam/firstBlock.txt");
+		secondTeamB2 = loader.loadText("assets/FansWordBlocks/secondTeam/secondBlock.txt");
+		secondTeamB3 = loader.loadText("assets/FansWordBlocks/secondTeam/thirdBlock.txt");
 
 
 		camera = new OrthographicCamera();
